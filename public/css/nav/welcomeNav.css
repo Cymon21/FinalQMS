@@ -1,0 +1,17 @@
+.image-container{
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+}
+.image-container img{
+    max-width: 80px;
+    max-height: 60px;
+    cursor: pointer;
+}
+.image-container h2{
+    color: var(--white-text-color);
+    font-family: 'Lora';
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}

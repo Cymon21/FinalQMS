@@ -1,0 +1,37 @@
+:root {
+    --navbar-color: #FEF5E7;
+    --dominant-color: #fff;
+    --primary-color: #003153;
+    --secondary-color: #00406d;
+    --icon-color: #004f86;
+    --icon-hover-color: #005ead;
+    --white-text-color: #ffffff;
+    --text-color: black;
+    --nav-text-color: #565656;
+    --status-sucess: #85d254;
+    --status-danger: #d9534f;
+    --divider-color: #D3D3D380;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', 'Lora';
+}
+h1, h2, h3, h4, h5, h6, p {
+    padding: 0;
+    margin: 0;
+}
+a{
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 550;
+    color: black;
+}
+
+body, html {
+    height: 100%;
+}
+
+
