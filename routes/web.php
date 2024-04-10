@@ -28,7 +28,7 @@ Route::get('/register', [AuthenticationController::class, 'register'])->name('au
 Route::post('/storeUser', [AuthenticationController::class, 'storeUser']);
 Route::get('/forgotpassword', [AuthenticationController::class, 'forgotPassword'])->name('auth.forgotpassword');
 
-//for validation
+//For validation
 Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserValidate']);
 
 //Main

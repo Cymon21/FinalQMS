@@ -9,9 +9,7 @@ use App\Http\Requests\RegisterStoreRequest;
 
 class AuthenticationController extends Controller
 {
-    public function _construct(){
-
-    }
+    public function _construct(){}
 
     public function login(){
         return view('auth.login');
@@ -23,11 +21,9 @@ class AuthenticationController extends Controller
 
     public function authenticate(Request $request){
         $credentials =  $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/Admin/dashboard');
         }
-
         return back()->withErrors(['email' => 'Invalid credentials'])->withInput($request->only('email'));
     }
 
