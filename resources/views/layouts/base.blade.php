@@ -16,7 +16,7 @@
     @yield('css')
 </head>
 <body>
-    <main class="py-4">
+    <main class="container-fluid">
         @yield('navBar')
         @yield('content')
     </main>

@@ -20,6 +20,7 @@ body{
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    max-width: 28rem;
     min-width: 28rem;
     min-height: 30rem;
     background-color: #ffffff90;
@@ -42,7 +43,7 @@ body{
 .login-form form{
     width: 100%;
     height: max-content;
-    margin-top: 1.4rem;
+    margin-top: 10px;
 }
 .form-group{
     width: 100%;
@@ -87,7 +88,7 @@ body{
     background-color: var(--primary-color);
     color: #f1f1f1;
     letter-spacing: 1px;
-    margin-top: 1rem;
+    margin-top: 5px;
 }
 .form-group button[type="submit"]:hover{
     transition: 0.5s;

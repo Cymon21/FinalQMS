@@ -27,8 +27,8 @@ class RegisterStoreRequest extends FormRequest
         return [
             'name' => ['required', 'min:6'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
-            'password' => 'required|min:6',
-            'password_confirmation' => 'required|min:6|required_with:password|same:password'
+            'password' => 'required|min:8|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+            'password_confirmation' => 'required|required_with:password|same:password'
 
         ];
     }
@@ -36,14 +36,15 @@ class RegisterStoreRequest extends FormRequest
     public function messages(){
         return[
             'name.required' => 'The name field is required',
+            'name.min' => 'The name field must be at least :min characters',
             'email.required' => 'The email field is required',
             'password.required' => 'The password field is required',
             'password_confirmation.required' => 'The password confirmation field is required',
             'email.unique' => 'The email has already been taken',
             'password.min' => 'The password must be at least :min characters',
-            'password_confirmation.same' => 'The password confirmation does not match'
+            'password.regex' => 'The password must contain both uppercase and lowercase with special characters.',
+            'password_confirmation.same' => 'The password confirmation does not match.'
         ];
-        
     }
 
     protected function failedValidation(Validator $validator) { 

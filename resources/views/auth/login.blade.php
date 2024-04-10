@@ -14,14 +14,15 @@
             <div class="login-form">
                 <h2>Sign In</h2>
                 <p>Sign in with your registered email account.</p>
-                <form action="" method="">
+                <form action="{{ route('auth.login') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="youremail@gmail.com" required />
+                        <input type="email" class="form-control" id="email" name="email" placeholder="youremail@gmail.com" required autofocus/>
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Type your password here" required />
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Type your password here" required/>
                     </div>
                     <div class="form-group">
                        <a href="{{route('auth.forgotpassword')}}" style="text-align: right;"><span>Forgot Password?</span></a>

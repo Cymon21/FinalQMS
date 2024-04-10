@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterStoreRequest;
 
 class AuthenticationController extends Controller
@@ -18,6 +19,16 @@ class AuthenticationController extends Controller
 
     public function register(){
         return view('auth.register');
+    }
+
+    public function authenticate(Request $request){
+        $credentials =  $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/Admin/dashboard');
+        }
+
+        return back()->withErrors(['email' => 'Invalid credentials'])->withInput($request->only('email'));
     }
 
     public function storeUser(RegisterStoreRequest $request){

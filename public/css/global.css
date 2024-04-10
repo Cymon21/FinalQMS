@@ -30,8 +30,9 @@ a{
     color: black;
 }
 
-body, html {
-    height: 100%;
+body,html{
+    height: 100vh;
+    width: 100vw;
 }
 
 
