@@ -20,8 +20,8 @@ body{
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    min-width: 28rem;
-    min-height: 30rem;
+    min-width: 30vw;
+    min-height: 30vh;
     background-color: #ffffff90;
     border-radius: 15px;
     padding: 2rem 30px;
