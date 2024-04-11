@@ -23,12 +23,14 @@ Route::get('/', function () {
 
 //Auth Section
 Route::get('/login', [AuthenticationController::class, 'login'])->name('auth.login');
+Route::post('/loginAuth', [AuthenticationController::class, 'authenticate'])->name('login.post');
 Route::get('/register', [AuthenticationController::class, 'register'])->name('auth.register');
 Route::post('/storeUser', [AuthenticationController::class, 'storeUser']);
 Route::get('/forgotpassword', [AuthenticationController::class, 'forgotPassword'])->name('auth.forgotpassword');
+Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
-//for validation
+//For validation
 Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserValidate']);
 
 //Main
-Route::get('/dashboard', [AdminDashboardController::class, 'dashboard']);
+Route::get('/Admin/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
