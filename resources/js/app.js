@@ -1,11 +1,10 @@
 import './bootstrap';
 import { createApp } from 'vue';
-import router from './routes';
-import AdminDashboard from './components/Admin/Dashboard.vue'
+import router from './router/index.js';
 
-createApp({
-    components: {
-        AdminDashboard
-    }
-}).use(router).mount('#app')
+
+const app = createApp({});
+
+app.use(router);
+app.mount('#app');
 

@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterStoreRequest;
-use Session;
+// use Session;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticationController extends Controller
 {

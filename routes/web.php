@@ -33,4 +33,4 @@ Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout
 Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserValidate']);
 
 //Main
-Route::get('/Admin/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
+Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
