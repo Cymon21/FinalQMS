@@ -11,6 +11,11 @@
     --status-sucess: #85d254;
     --status-danger: #d9534f;
     --divider-color: #D3D3D380;
+    --color_Blue: #3f93f1;
+    --color_Dark1:#003153;
+    --color_Dark2: #252527;
+    --color_Light1: #dfdfdf;
+    --color_Light2: #c4c4c4;
 }
 
 * {
