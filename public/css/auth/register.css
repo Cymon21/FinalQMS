@@ -20,10 +20,10 @@ body{
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    max-width: 28rem;
-    min-width: 28rem;
+    max-width: 33rem;
+    min-width: 33rem;
     min-height: 30rem;
-    background-color: #ffffff90;
+    background-color: #ffffff97;
     border-radius: 15px;
     padding: 2rem 30px;
 }
@@ -46,11 +46,11 @@ body{
     margin-top: 10px;
 }
 .form-group{
+    position: relative;
     width: 100%;
     min-height: 30px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 6px;
 }
 .form-group label{
     font-family: 'Lato';
@@ -66,7 +66,7 @@ body{
     border-radius: 5px;
     background: #f1f1f1;
     box-shadow: 2px 2px 3px #c7c7c7;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 
@@ -88,7 +88,6 @@ body{
     background-color: var(--primary-color);
     color: #f1f1f1;
     letter-spacing: 1px;
-    margin-top: 5px;
 }
 .form-group button[type="submit"]:hover{
     transition: 0.5s;
@@ -96,22 +95,32 @@ body{
     color: #f1f1f1;
 }
 
-.wordDevider{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    font-family: 'Lato';
-    font-size: 15px;
-    color: var(--secondary-color);
-    font-weight: 600;
-    margin-bottom: 10px;
+.form-group, #password{
+    margin: 0px 0px 13px 0px;
 }
 #nameError,
 #emailError,
-#passwordError,
 #password_confirmationError {
     color: red;
-    font-size: 14px;
-    font-family: 'Roboto';
-    margin-top: 2px;
+    font-size: 13px;
+}
+#passwordError{
+    position: absolute;
+    bottom: -10%;
+    color: red;
+    font-size: 13px; 
+}
+.las {
+    position: absolute;
+    top: 55%;
+    right: 13px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--primary-color);
+    opacity: 70%;
+  }
+.las:hover{
+    opacity: 100%;
+    transition: 0.5s;
 }

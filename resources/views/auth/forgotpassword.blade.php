@@ -18,6 +18,7 @@
                     <div class="form-group">
                         <label for="">Email</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter your registered email" required />
+                        <i class="las la-envelope"></i>
                     </div>
                     <div class="form-group">
                        <button type="submit">Reset Password</button>

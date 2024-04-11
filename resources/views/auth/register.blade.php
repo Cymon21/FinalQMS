@@ -17,25 +17,26 @@
                  <form id="createUserForm" action="/storeUser" method="POST">
                      @csrf
                      <div class="form-group">
-                         <label for="">Name</label>
+                         <label for="">Name *</label>
                          <input type="text" class="form-control" id="name" name="name"
                              placeholder="Enter your fullname here" />
                          <div id="nameError"></div>
                      </div>
                      <div class="form-group">
-                         <label for="">Email</label>
+                         <label for="">Email *</label>
                          <input type="email" class="form-control" id="email" name="email"
                              placeholder="Enter your valid email here" />
                          <div id="emailError"></div>
                      </div>
                      <div class="form-group">
-                         <label for="">Password</label>
+                         <label for="">Password *</label>
                          <input type="password" class="form-control" id="password" name="password"
                              placeholder="Type your password here" />
                          <div id="passwordError"></div>
+                         <i class="las la-eye" id="togglePassword"></i>
                      </div>
                      <div class="form-group">
-                         <label for="">Confirm Password</label>
+                         <label for="" class="confPass">Confirm Password *</label>
                          <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
                              placeholder="Confirm your password here" />
                          <div id="password_confirmationError"></div>
@@ -60,7 +61,8 @@
                          Swal.fire({
                              position: "center",
                              icon: "success",
-                             title: "Registration Success! Please wait for verification",
+                             title: "Registration Success",
+                             text: "Verification will be sent directly to your registered email. Just wait for it.",
                              showConfirmButton: true
                          }).then(() => {
                              window.location.href = response.data.redirect;
@@ -118,4 +120,18 @@
              (data[inputType] != undefined) ? erroDiv.innerHTML = data[inputType][0]: erroDiv.innerHTML = "";
          }
      </script>
+
+
+     {{-- For password toggle --}}
+     <script>
+         const togglePassword = document.querySelector('#togglePassword');
+         const password = document.querySelector('#password');
+
+         togglePassword.addEventListener('click', function(e) {
+             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+             password.setAttribute('type', type);
+             this.classList.toggle('la-eye-slash');
+         });
+     </script>
+
  @endsection

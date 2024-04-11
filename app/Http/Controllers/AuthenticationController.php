@@ -6,33 +6,50 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterStoreRequest;
+use Session;
 
 class AuthenticationController extends Controller
 {
-    public function _construct(){}
+    public function _construct(){
+    }
 
-    public function login(){
+    public function login()
+    {
         return view('auth.login');
     }
 
-    public function register(){
+    public function register()
+    {
         return view('auth.register');
     }
 
-    public function authenticate(Request $request){
-        $credentials =  $credentials = $request->only('email', 'password');
+    public function authenticate(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/Admin/dashboard');
+            // Authentication was successful
+            return redirect()->intended(route('AdminDash'));
+        } else {
+            // Authentication failed
+            return redirect()->back()->withInput($request->only('email'))->withErrors([
+                'email' => 'These credentials does not match.'
+            ]);
         }
-        return back()->withErrors(['email' => 'Invalid credentials'])->withInput($request->only('email'));
     }
 
-    public function storeUser(RegisterStoreRequest $request){
 
+    public function storeUser(RegisterStoreRequest $request)
+    {
         $request['password'] = bcrypt($request['password']);
         $data = $request->all();
         $response = User::create($data);
-        if ($response) { 
+        if ($response) {
             // User creation was successful
             return response()->json([
                 'status' => 'success',
@@ -47,10 +64,20 @@ class AuthenticationController extends Controller
         }
     }
 
-    public function storeUserValidate(RegisterStoreRequest $request){}
+    public function storeUserValidate(RegisterStoreRequest $request)
+    {
+    }
 
 
-    public function forgotPassword(){
+    public function forgotPassword()
+    {
         return view('auth.forgotpassword');
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+        return response()->json(['redirect' => '/login']);
     }
 }
