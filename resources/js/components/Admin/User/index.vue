@@ -1,6 +1,6 @@
 <template>
     <div class="main-container">
-        <h1>Admin Dashboard</h1>
+        <h1>User View Dashboard</h1>
     </div>
 </template>
 
@@ -8,7 +8,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            // console.log('Component mounted.')
         }
     }
 </script>

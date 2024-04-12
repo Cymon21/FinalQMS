@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterStoreRequest;
 // use Session;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthenticationController extends Controller
 {
-    public function _construct(){
+    public function _construct()
+    {
     }
 
     public function login()
@@ -75,10 +77,12 @@ class AuthenticationController extends Controller
         return view('auth.forgotpassword');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Session::flush();
-        Auth::logout();
-        return response()->json(['redirect' => '/login']);
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        Alert::success('Logged Out', 'You have been logged out.')->autoclose(3000);
+        return redirect('/login');
     }
 }

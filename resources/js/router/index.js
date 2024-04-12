@@ -1,20 +1,37 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AdminDashBoard from '../components/Admin/Dashboard.vue';
+
+//Pages Admin
+import AdminDashboard from '../components/Admin/Dashboard.vue';
+import NotFound from '../components/Notfound.vue';
+import TransactionView from '../components/Admin/Transaction/index.vue';
+import UsersView from '../components/Admin/User/index.vue';
+
+
 
 const routes = [
     {
-        path: '/',
-        // component:,
+        path: '/:pathMatch(.*)*',
+        component: NotFound,
     },
     {
         path: '/dashboard',
         name: 'dashboard',
-        component: AdminDashBoard
-    }
+        component: AdminDashboard
+    },
+    {
+        path: '/transaction',
+        name: 'transaction',
+        component: TransactionView
+    },
+    {
+        path: '/user',
+        name: 'user',
+        component: UsersView
+    },
 ]
 
 const router = createRouter({
-    history: createWebHistory,
+    history: createWebHistory(),
     routes
 })
 

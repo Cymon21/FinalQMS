@@ -33,4 +33,8 @@ Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout
 Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserValidate']);
 
 //Main
+Route::get('/{pathMatch}', function () {
+    return view('home');
+})->where('pathMatch',".*");
+
 Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');

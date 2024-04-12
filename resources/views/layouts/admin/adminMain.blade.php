@@ -22,159 +22,69 @@
      <link rel="stylesheet" href="{{ asset('css/global.css') }}">
      <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
 
-     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+     @vite('resources/sass/app.scss')
  </head>
- {{-- @extends('layouts.base')
-@section('title', 'Admin')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-@endsection
-
-@section('content') --}}
 
  <body>
-     <div class="content-wrapper" id="app">
-         <div class="sidebar close">
-             <a href="#" class="logo-box">
-                 <div> <img src="{{ asset('images/spc_logo.png') }}" alt="spc-logo"></div>
-                 <div class="logo-name">San Pedro College</div>
-             </a>
+    @include('sweetalert::alert')
+     <div class="main-wrapper" id="app">
+         <div class="sidebar">
+             <div class="spc-header">
+                 <img src="{{ asset('images/spc_logo.png') }}" alt="spc-logo">
+                 <h3>San Pedro College</h3>
+             </div>
+
+
 
              <ul class="sidebar-list">
                  <li>
-                     <div class="title">
-                         <router-link to="/dashboard" class="nav-link">
+                     <router-link to="/dashboard" class="nav-link">
+                         <div class="title">
                              <i class='bx bx-grid-alt'></i>
                              <span class="name">Dashboard</span>
-                         </router-link>
-
-                         {{-- <a href="#" class="link">
-                           <i class='bx bx-grid-alt'></i>
-                           <span class="name">Dashboard</span>
-                       </a> --}}
-                         <!-- <i class='bx bxs-chevron-down'></i> -->
-                     </div>
-                     <div class="submenu">
-                         <router-link to="/dashboard" class="link submenu-title"
-                             class="nav-link">Dashboard</router-link>
-                     </div>
+                         </div>
+                     </router-link>
                  </li>
 
-                 <!-- -------- Dropdown List Item ------- -->
-                 <li class="dropdown">
-                     <div class="title">
-                         <a href="#" class="link">
+                 <li>
+                     <router-link to="/transaction" class="nav-link">
+                         <div class="title">
                              <i class='bx bx-collection'></i>
                              <span class="name">Transaction</span>
-                         </a>
-                         <i class='bx bxs-chevron-down'></i>
-                     </div>
-                     <div class="submenu">
-                         <a href="#" class="link submenu-title">Transaction</a>
-                         <a href="#" class="link">Transaction List</a>
-                         <a href="#" class="link">Manage Transaction</a>
-                     </div>
+                         </div>
+                     </router-link>
                  </li>
 
+
                  <li>
-                     <div class="title">
-                         <a href="#" class="link">
+                     <router-link to="/user" class="nav-link">
+                         <div class="title">
                              <i class='bx bx-user-circle'></i>
                              <span class="name">Users</span>
-                         </a>
-                         <!-- <i class='bx bxs-chevron-down'></i> -->
-                     </div>
-                     <div class="submenu">
-                         <a href="#" class="link submenu-title">Users</a>
-                     </div>
+                         </div>
+                     </router-link>
                  </li>
-
-
                  <li>
                      <div class="title">
-                         <a href="#" class="link">
+                         <a href="{{ route('logout') }}" style="text-decoration: none;">
                              <i class='bx bxs-log-out'></i>
-                             <span class="name" id="logoutBtn">Logout</span>
+                             <span class="name">Logout</span>
                          </a>
-                     </div>
-                     <div class="submenu">
-                         <span class="link submenu-title" id="logoutBtn">Logout</span>
                      </div>
                  </li>
              </ul>
          </div>
-
-         <div class="home">
-             <div class="upper-toogle-nav">
-                 <div class="toggle-sidebar">
-                     <a class="purple-head hover-black" onclick="changeIcon(this)">
-                         <i class='bx bx-last-page' id="bx-last-page"></i>
-                     </a>
-                 </div>
-                 {{-- <span class="text">Dashboard</span> --}}
-             </div>
+         <div class="wrapper">
              <router-view></router-view>
          </div>
      </div>
-     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+     
+
+     @vite('resources/js/app.js')
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-     <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
-     <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
  </body>
 
  </html>
-
-
- <script>
-     const listItems = document.querySelectorAll(".sidebar-list li");
-     listItems.forEach((item) => {
-         item.addEventListener("click", () => {
-             let isActive = item.classList.contains("active");
-
-             listItems.forEach((el) => {
-                 el.classList.remove("active");
-             });
-
-             if (isActive) item.classList.remove("active");
-             else item.classList.add("active");
-         });
-     });
-
-     const toggleSidebar = document.querySelector(".toggle-sidebar");
-     const sidebar = document.querySelector(".sidebar");
-
-     toggleSidebar.addEventListener("click", () => {
-         sidebar.classList.toggle("close");
-     });
-
-     function changeIcon(anchor) {
-         var icon = anchor.querySelector("i");
-         icon.classList.toggle('bx-last-page');
-         icon.classList.toggle('bx-first-page');
-     }
- </script>
-
-
- <script>
-     document.getElementById('logoutBtn').addEventListener('click', function() {
-         axios.get('/logout')
-             .then(function(response) {
-                 Swal.fire({
-                     position: "center",
-                     icon: "success",
-                     title: "Logout Successfully!",
-                     showConfirmButton: false,
-                     timer: 1000
-                 }).then(() => {
-                     window.location.href = response.data.redirect;
-                 });
-             })
-             .catch(function(error) {
-                 // Handle errors
-                 console.error(error);
-             });
-     });
- </script>
- {{-- @endsection --}}
