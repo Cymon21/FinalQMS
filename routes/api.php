@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ManageUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Admin Manage User
+Route::get('user/display', [ManageUserController::class, 'show']);
+Route::get('/usertype', [ManageUserController::class, 'usertypeBasis']);
+Route::get('/designation', [ManageUserController::class, 'designationFilter']);
+Route::post('/user/create', [ManageUserController::class, 'store']);
+

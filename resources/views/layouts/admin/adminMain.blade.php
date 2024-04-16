@@ -25,66 +25,71 @@
      @vite('resources/sass/app.scss')
  </head>
 
- <body>
-    @include('sweetalert::alert')
-     <div class="main-wrapper" id="app">
-         <div class="sidebar">
-             <div class="spc-header">
-                 <img src="{{ asset('images/spc_logo.png') }}" alt="spc-logo">
-                 <h3>San Pedro College</h3>
+ <body class="hold-transition sidebar-mini">
+     @include('sweetalert::alert')
+     <div class="wrapper" id="app">
+         <aside class="main-sidebar sidebar-dark-primary elevation-4">
+             <div class="spc-logo">
+                <a href="{{ route('AdminDash') }}">
+                    <img src="{{ asset('images/spc_logo.png') }}" alt="spc-logo">
+                </a>
+                <h4>San Pedro College</h4>
              </div>
-
-
-
-             <ul class="sidebar-list">
-                 <li>
-                     <router-link to="/dashboard" class="nav-link">
-                         <div class="title">
-                             <i class='bx bx-grid-alt'></i>
-                             <span class="name">Dashboard</span>
-                         </div>
-                     </router-link>
-                 </li>
-
-                 <li>
-                     <router-link to="/transaction" class="nav-link">
-                         <div class="title">
-                             <i class='bx bx-collection'></i>
-                             <span class="name">Transaction</span>
-                         </div>
-                     </router-link>
-                 </li>
-
-
-                 <li>
-                     <router-link to="/user" class="nav-link">
-                         <div class="title">
-                             <i class='bx bx-user-circle'></i>
-                             <span class="name">Users</span>
-                         </div>
-                     </router-link>
-                 </li>
-                 <li>
-                     <div class="title">
-                         <a href="{{ route('logout') }}" style="text-decoration: none;">
-                             <i class='bx bxs-log-out'></i>
-                             <span class="name">Logout</span>
-                         </a>
+             <nav class="navbar navbar-expand-lg">
+                 <ul class="nav nav-pills nav-sidebar flex-column">
+                     <div class="navbar-div">
+                         <li class="nav-item">
+                             <router-link to="/dashboard" class="nav-link">
+                                 <div class="linknav">
+                                     <i class='bx bx-grid-alt'></i>
+                                     <span>Dashboard</span>
+                                 </div>
+                             </router-link>
+                         </li>
                      </div>
-                 </li>
-             </ul>
-         </div>
-         <div class="wrapper">
+                     <div class="navbar-div">
+                         <li class="nav-item">
+                             <router-link to="/user" class="nav-link">
+                                 <div class="linknav">
+                                     <i class='bx bx-user-circle'></i>
+                                     <span>User</span>
+                                 </div>
+                             </router-link>
+                         </li>
+                     </div>
+                     <div class="navbar-div">
+                         <li class="nav-item">
+                             <router-link to="/usertype" class="nav-link">
+                                 <div class="linknav">
+                                     <i class='bx bx-user-circle'></i>
+                                     <span>Manage User Type</span>
+                                 </div>
+                             </router-link>
+                         </li>
+                     </div>
+                     <div class="navbar-div">
+                         <li class="nav-item">
+                             <a href="{{ route('logout') }}" class="nav-link">
+                                 <div class="linknav">
+                                     <i class='bx bxs-log-out'></i>
+                                     <span class="name">Logout</span>
+                                 </div>
+                             </a>
+                         </li>
+                     </div>
+                 </ul>
+             </nav>
+         </aside>
+         <div class="content-wrapper">
              <router-view></router-view>
          </div>
      </div>
-
-     
-
      @vite('resources/js/app.js')
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  </body>
 
  </html>

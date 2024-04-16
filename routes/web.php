@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthenticationController;
 
 //Auth Section
-use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 
 /*
@@ -28,13 +28,13 @@ Route::get('/register', [AuthenticationController::class, 'register'])->name('au
 Route::post('/storeUser', [AuthenticationController::class, 'storeUser']);
 Route::get('/forgotpassword', [AuthenticationController::class, 'forgotPassword'])->name('auth.forgotpassword');
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
-
-//For validation
 Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserValidate']);
 
-//Main
+//Admin Main
+Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
+
+//Not Found
 Route::get('/{pathMatch}', function () {
     return view('home');
 })->where('pathMatch',".*");
 
-Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
