@@ -1,0 +1,59 @@
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container-fluid{
+    background-color: #004f86;
+}
+.container{
+    max-width: 2000px !important;
+    display: flex;
+    padding: 0px 0px !important;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+   
+}
+.logo a{
+    margin: 0;
+}
+.navbar h3{
+    margin-left: 10px;
+    font-family: lora;
+    font-size: 1.5rem;
+    cursor: default;
+    margin-bottom: 0;
+}
+.bx{
+  font-size: 20px;
+  margin-left: 5px;
+   
+}
+.logout{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+button{
+    text-align: center;
+    border: none;
+    min-width: 20px;
+    min-height: 33px;
+    text-align: center;
+    white-space: nowrap;
+    background-color: transparent !important;
+}
+button span, i{
+    color:white;
+    font-size: 1.1rem;
+}
