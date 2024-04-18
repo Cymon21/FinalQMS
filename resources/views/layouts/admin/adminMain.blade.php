@@ -26,7 +26,6 @@
  </head>
 
  <body class="hold-transition sidebar-mini">
-     @include('sweetalert::alert')
      <div class="wrapper" id="app">
          <aside class="main-sidebar sidebar-dark-primary elevation-4">
              <div class="spc-logo">

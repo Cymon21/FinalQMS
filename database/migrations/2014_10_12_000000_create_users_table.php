@@ -22,20 +22,6 @@ return new class extends Migration
             $table->timestamps();
             $table->engine = 'InnoDB';
 
-
-            //Foreign Key execution will accept null values
-            // $table->dropForeign(['usertype_id', 'designation_id']);
-            // $table->unsignedBigInteger('usertype_id')->nullable()->change();
-            // $table->unsignedBigInteger('designation_id')->nullable()->change();
-
-            // $table->foreign('usertype_id')
-            //         ->references('id')->on('usertype')
-            //         ->onUpdate('cascade')
-            //         ->onDelete('cascade');
-            // $table->foreign('designation_id')
-            //         ->references('id')->on('designation')
-            //         ->onUpdate('cascade')
-            //         ->onDelete('cascade');
         });
     }
 

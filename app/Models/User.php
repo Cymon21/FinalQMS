@@ -24,9 +24,11 @@ class User extends Authenticatable
         'email',
         'password',
         'status',
-        'userType',
-        'disignation'
+        'usertype_id',
+        'designation_id'
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,4 +48,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_type()
+    {   
+        //Model name tapos name sa column sa imong database
+        return $this->belongsTo(UserType::class, 'usertype_id');
+    }
+
+    public function designation(){
+        return $this->belongsTo(Designation::class, 'designation_id');
+    } 
 }

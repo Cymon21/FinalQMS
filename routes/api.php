@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ManageUserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,8 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Admin Manage User
-Route::get('user/display', [ManageUserController::class, 'show']);
+Route::get('/user/display', [ManageUserController::class, 'show']);
 Route::get('/usertype', [ManageUserController::class, 'usertypeBasis']);
 Route::get('/designation', [ManageUserController::class, 'designationFilter']);
 Route::post('/user/create', [ManageUserController::class, 'store']);
+Route::delete('/user/delete/{id}', [ManageUserController::class, 'destroy']);
+Route::put('/user/put/{id}', [ManageUserController::class, 'verify']);
+
 

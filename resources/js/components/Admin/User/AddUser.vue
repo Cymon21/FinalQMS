@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" id="add-user-modal">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add User</h5>
@@ -18,6 +18,8 @@
                             class="form-control"
                             placeholder="Name"
                             aria-required="true"
+                            v-model="user.name"
+                            required
                         />
                     </div>
                     <div class="form-group">
@@ -27,6 +29,8 @@
                             class="form-control"
                             placeholder="email@gmail.com"
                             aria-required="true"
+                            v-model="user.email"
+                            required
                         />
                     </div>
                     <div class="form-group">
@@ -36,7 +40,6 @@
                             id="usertype"
                             v-model="selectedClass"
                         >
-                            <option disabled>Choose</option>
                             <option
                                 v-for="item in usertype"
                                 :key="item.id"
@@ -48,11 +51,16 @@
                     </div>
                     <div class="form-group">
                         <label>Designation</label>
-                        <select class="form-control" id="designation" required>
+                        <select
+                            v-model="selectedDesig"
+                            class="form-control"
+                            id="designation"
+                            required
+                        >
                             <option
                                 v-for="desig in designation"
                                 :key="desig.id"
-                                :value="desig.name"
+                                :value="desig"
                             >
                                 {{ desig.name }}
                             </option>
@@ -77,7 +85,13 @@
                     >
                         Close
                     </button>
-                    <button type="submit" class="btn btn-primary" @click="submitUser">Add</button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        @click="submitUser"
+                    >
+                        Add
+                    </button>
                 </div>
             </div>
         </div>
@@ -86,6 +100,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
     data() {
         return {
@@ -96,26 +111,39 @@ export default {
             usertype: [],
             designation: [],
             selectedClass: "",
+            selectedDesig: "",
             password: "",
         };
     },
     methods: {
         submitUser() {
             let formData = new FormData();
-            formData.append("usertype_id", selectedClass?.id);
-            formData.append("designation_id", selectedClass?.id);
+            formData.append("name", this.user.name);
+            formData.append("email", this.user.email);
+            formData.append("usertype_id", this.selectedClass?.id);
+            formData.append("designation_id", this.selectedDesig?.id);
+            formData.append("password", this.password);
 
-            axios.post("/api/user/create", formData)
+            axios
+                .post("/api/user/create", formData)
                 .then((response) => {
-                    console.log(response.data);
+                    // console.log(response.data);
                     this.user.name = "";
                     this.user.email = "";
                     this.selectedClass = "";
-                    this.designation_id = "";
+                    this.selectedDesig = "";
                     this.password = "";
-                    // this.user.reset();
-                    // $('#add-user-modal').modal('hide');
-                }).catch((error) => {
+                    $("#add-user-modal").modal("hide");
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "User has been added!",
+                        showConfirmButton: false,
+                        timer: 3000,
+                    });
+                    this.$emit('displayUsers'); //$emit for the parent
+                })
+                .catch((error) => {
                     console.log(error);
                 });
         },

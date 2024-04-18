@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterStoreRequest;
 // use Session;
 use Illuminate\Support\Facades\Session;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthenticationController extends Controller
 {
@@ -82,7 +81,6 @@ class AuthenticationController extends Controller
         Session::flush();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        Alert::success('Logged Out', 'You have been logged out.')->autoclose(3000);
         return redirect('/login');
     }
 }
