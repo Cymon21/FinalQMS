@@ -36,7 +36,7 @@
                                 <img class="d-inline-block align-center" src="{{ asset('images/spc_logo.png') }}"
                                     alt="spc-logo" width="40" height="60">
                             </a>
-                            <h3>San Pedro Colleges</h3>
+                            <h3>San Pedro College</h3>
                         </div>
                         <button class="btn">
                             <div class="logout">

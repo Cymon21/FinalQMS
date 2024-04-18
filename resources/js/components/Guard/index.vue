@@ -1,40 +1,28 @@
 <template>
-<div class="container">
     <div class="container">
-        <div class="form">
-        <div class="input-group">
-            <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-        </div>
-    </div>
-    </div>
-
-    <div class="container">
-        <div class="content">
-            <div class="queue1">
-            <div class="title">Current No.</div>
-            <div class="title">4</div>
+        <div class="content1">
+            <div class="childcontent1">
+                <div class="card card1"></div>
+                <div class="card card2"></div>
             </div>
-            
-            <div class="queue2">
-                <div class="title">Current No.</div>
-                <div class="title">5</div>
+        </div>
+        <!-- <____content2___________> -->
+        <div class="content2">
+            <div class="childcontent2">
+                <div class="quenumber">
+                    <h2>Current no.</h2>
+                    <h1>1</h1>
                 </div>
-        </div>
-        <div class="button">
-        <button class="btn">
-            <div class="logout">
-                <span>Logout</span>
-                <i class='bx bx-log-out'></i>
+                <div class="quenumber">
+                    <div class="qeunumbercontent">
+                        <h3>Next number</h3>
+                        <h3>2</h3>
+                    </div>
+                </div>
             </div>
-        </button>
-
+            <div class="childbutton">
+                <button class="btn">Print</button>
+            </div>
         </div>
     </div>
-    
-</div>
 </template>
