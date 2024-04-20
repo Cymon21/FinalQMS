@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthenticationController;
 
 //Auth Section
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Guard\GuardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserVa
 
 //Admin Main
 Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
+// User Main
+Route::get('/guard', [GuardController::class, 'index'])->name('guard');
 
 //Not Found
 Route::get('/{pathMatch}', function () {
