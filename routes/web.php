@@ -6,6 +6,10 @@ use App\Http\Controllers\AuthenticationController;
 //Auth Section
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Guard\GuardController;
+use App\Http\Controllers\Cashier\CashierController;
+use App\Http\Controllers\Assesor\AssesorController;
+use App\Http\Controllers\QueueDisplay\QueueDisplayController;
+use App\Http\Controllers\Unverified\UnverifiedUsersContoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +37,16 @@ Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserVa
 
 //Admin Main
 Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
+
 // User Main
-Route::get('/guard', [GuardController::class, 'index'])->name('guard');
+
+Route::get('/guard', [GuardController::class, 'index'])->name('guard.dashboard');
+Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.dashboard');
+Route::get('/assesor', [AssesorController::class, 'index'])->name('assesor.dashboard');
+Route::get('/queuedisplay', [QueueDisplayController::class, 'index'])->name('queuedisplay.dashboard');
+
+//Unverified Users
+Route::get('/unverified', [UnverifiedUsersContoller::class, 'index'])->name('unverified.dashboard');
 
 //Not Found
 Route::get('/{pathMatch}', function () {

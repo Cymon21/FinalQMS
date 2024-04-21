@@ -13,7 +13,7 @@
                     </button>
                 </div>
 
-                <table class="table table-xl">
+                <table class="table table-borderless table-responsive table-xl">
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
@@ -40,7 +40,7 @@
                                     <button
                                         v-if="!user.verified"
                                         type="submit"
-                                        class="btn btn-info"
+                                        class="btn btn-warning"
                                         @click="verifyUser(user)"
                                     >
                                         <div class="submit">
@@ -52,7 +52,7 @@
                                         v-if="!user.unverified"
                                         type="submit"
                                         class="btn btn-info"
-                                        @click="editUser"
+                                        @click="editUser(user)"
                                     >
                                         <div>
                                             <i class="las la-edit"></i>
@@ -81,7 +81,7 @@
         <add-user-modal @displayUsers="displayUsers"></add-user-modal>
         <!-- Call the (Props Name) -->
         <verify-user-modal :selected_user="selected_user" @displayVerifiedUsers="displayUsers"></verify-user-modal>
-        <edit-user-modal></edit-user-modal>
+        <edit-user-modal :edit_user="edit_user"></edit-user-modal>
     </div>
 </template>
 
@@ -102,7 +102,9 @@ export default {
     },
     data() {
         return {
+            //assign props here  as object
             selected_user: {},
+            edit_user:{},
             listofUsers: [],
         };
     },
@@ -132,7 +134,9 @@ export default {
             this.selected_user = selected_user;
             $("#verify-user-modal").modal("show");
         },
-        editUser() {
+        editUser(edit_user) {
+            // console.log(edit_user);
+            this.edit_user = edit_user;
             $("#edit-user-modal").modal("show");
         },
         getStatusClass(status) {

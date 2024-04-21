@@ -58,9 +58,10 @@ class ManageUserController extends Controller
         return User::with('user_type', 'designation')->get();
     }
 
-    public function verify(Request $request, $id){
+    public function verify(Request $request, $id)
+    {
         $user = User::findOrFail($id);
-       
+
         $request['status'] = 'Verified';
         $user->update($request->all());
 

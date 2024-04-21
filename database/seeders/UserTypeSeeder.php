@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\UserType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UserTypeSeeder extends Seeder
 {
@@ -15,16 +16,29 @@ class UserTypeSeeder extends Seeder
     {
         $usertype = [
             [
-                'name' => 'Cashier'
+                'name' => 'Cashier',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Assessor'
+                'name' => 'Assessor',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Guard'
+                'name' => 'Guard',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'Queue Display'
+                'name' => 'Queue Display',
+                'created_at'=> Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=> Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Admin',
+                'created_at'=> Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=> Carbon::now()->format('Y-m-d H:i:s'),
             ],
         ];
 

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ManageUserController;
+use App\Http\Controllers\Admin\ManageUserTypeController;
 
 
 /*
@@ -21,11 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Admin Manage User
-Route::get('/user/display', [ManageUserController::class, 'show']);
-Route::get('/usertype', [ManageUserController::class, 'usertypeBasis']);
-Route::get('/designation', [ManageUserController::class, 'designationFilter']);
-Route::post('/user/create', [ManageUserController::class, 'store']);
-Route::delete('/user/delete/{id}', [ManageUserController::class, 'destroy']);
-Route::put('/user/put/{id}', [ManageUserController::class, 'verify']);
+    Route::get('/user/display', [ManageUserController::class, 'show']);
+    Route::get('/usertype', [ManageUserController::class, 'usertypeBasis']);
+    Route::get('/designation', [ManageUserController::class, 'designationFilter']);
+    Route::post('/user/create', [ManageUserController::class, 'store']);
+    Route::delete('/user/delete/{id}', [ManageUserController::class, 'destroy']);
+    Route::put('/user/put/{id}', [ManageUserController::class, 'verify']);
 
+//Admin ManageUser Type
+    Route::get('/userType/display', [ManageUserTypeController::class, 'showUserType']);
+    Route::get('/designation/display', [ManageUserTypeController::class, 'showDesignation']);
 

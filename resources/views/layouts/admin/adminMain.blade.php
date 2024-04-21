@@ -40,7 +40,7 @@
                          <li class="nav-item">
                              <router-link to="/dashboard" class="nav-link">
                                  <div class="linknav">
-                                     <i class='bx bx-grid-alt'></i>
+                                    <i class='bx bxs-dashboard'></i>
                                      <span>Dashboard</span>
                                  </div>
                              </router-link>
@@ -60,8 +60,18 @@
                          <li class="nav-item">
                              <router-link to="/usertype" class="nav-link">
                                  <div class="linknav">
-                                     <i class='bx bx-user-circle'></i>
+                                    <i class='bx bx-category'></i>
                                      <span>Manage User Type</span>
+                                 </div>
+                             </router-link>
+                         </li>
+                     </div>
+                     <div class="navbar-div">
+                         <li class="nav-item">
+                             <router-link to="" class="nav-link">
+                                 <div class="linknav">
+                                    <i class='bx bxs-report'></i>
+                                     <span>Logs</span>
                                  </div>
                              </router-link>
                          </li>
@@ -70,7 +80,7 @@
                          <li class="nav-item">
                              <a href="{{ route('logout') }}" class="nav-link">
                                  <div class="linknav">
-                                     <i class='bx bxs-log-out'></i>
+                                    <i class='bx bx-log-out-circle'></i>
                                      <span class="name">Logout</span>
                                  </div>
                              </a>

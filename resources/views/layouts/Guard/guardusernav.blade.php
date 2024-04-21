@@ -32,7 +32,7 @@
                 <nav class="navbar navbar-expand-sm navbar-light navbar-dark align-center">.
                     <div class="container">
                         <div class="logo">
-                            <a href="{{ route('guard') }}" class="navbar-brand mb-0 h1  ">
+                            <a href="{{ route('guard.dashboard') }}" class="navbar-brand mb-0 h1  ">
                                 <img class="d-inline-block align-center" src="{{ asset('images/spc_logo.png') }}"
                                     alt="spc-logo" width="40" height="60">
                             </a>

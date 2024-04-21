@@ -17,7 +17,7 @@
                             type="text"
                             class="form-control"
                             placeholder="Name"
-                            aria-required="true"
+                            v-model="user.name"
                         />
                     </div>
                     <div class="form-group">
@@ -26,25 +26,40 @@
                             type="email"
                             class="form-control"
                             placeholder="email@gmail.com"
-                            aria-required="true"
+                            v-model="user.email"
                         />
                     </div>
                     <div class="form-group">
                         <label>User Type</label>
-                        <select class="form-control" id="usertype">
-                            <option value="">Cashier</option>
-                            <option value="">Assessor</option>
-                            <option value="">Guard</option>
-                            <option value="">Queue Display</option>
+                        <select
+                            class="form-control"
+                            id="usertype"
+                            v-model="selectedUserType"
+                        >
+                            <option
+                                v-for="item in usertype"
+                                :key="item.id"
+                                :value="item"
+                            >
+                                {{ item.name }}
+                            </option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Designation</label>
-                        <select class="form-control" id="designation">
-                            <option value="">Cashier</option>
-                            <option value="">Assessor</option>
-                            <option value="">Guard</option>
-                            <option value="">Queue Display</option>
+                        <select
+                            class="form-control"
+                            id="designation"
+                            v-model="selectedDesig"
+                        >
+                            <option
+                                v-for="desig in designation"
+                                :key="desig.id"
+                                :value="desig"
+                                selected
+                            >
+                                {{ desig.name }}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -64,7 +79,63 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  
+    props: ["edit_user"],
+    data() {
+        return {
+            user: {
+                id: "",
+                name: "",
+                email: "",
+            },
+            usertype: [],
+            designation: [],
+            selectedUserType: "",
+            selectedDesig: "",
+        };
+    },
+    methods: {
+        // updateUser(id){},
+        displayUserType() {
+            axios
+                .get("/api/usertype")
+                .then((response) => {
+                    this.usertype = response.data.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+    },
+    watch: {
+        selectedUserType: function (value) {
+            axios
+                .get(
+                    "/api/designation?usertype_id=" + this.selectedUserType?.id
+                )
+                .then((response) => {
+                    this.designation = response.data.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+
+        edit_user: {
+            handler(val) {
+                // console.log(val);
+                this.user.id = val.id;
+                this.user.name = val.name;
+                this.user.email = val.email;
+                this.selectedUserType = val.selectedUserType;
+                this.selectedDesig = val.selectedDesig;
+            },
+            deep: true,
+        },
+    },
+    mounted() {
+        this.displayUserType();
+    },
 };
 </script>

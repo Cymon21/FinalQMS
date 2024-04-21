@@ -36,14 +36,34 @@ class AuthenticationController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication was successful
-            return redirect()->intended(route('AdminDash'));
-        } else {
+            $user = Auth::user();
+
+            if ($user->status == 'Unverified') {
+                return redirect()->route('unverified.dashboard');
+            } else {
+                switch ($user->usertype_id) {
+                    case 1:
+                        return redirect()->route('cashier.dashboard');
+                    case 2:
+                        return redirect()->route('assesor.dashboard');
+                    case 3:
+                        return redirect()->route('guard.dashboard');
+                    case 4:
+                        return redirect()->route('queuedisplay.dashboard');
+                    case 5:
+                        return redirect()->route('AdminDash');
+                    default:
+                        return redirect()->route('unverified.dashboard');
+                }
+            }
+        } else {   
             // Authentication failed
             return redirect()->back()->withInput($request->only('email'))->withErrors([
                 'email' => 'These credentials does not match.'
             ]);
         }
     }
+
 
 
     public function storeUser(RegisterStoreRequest $request)

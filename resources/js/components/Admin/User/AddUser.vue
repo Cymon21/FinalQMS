@@ -167,6 +167,8 @@ export default {
                     return "guard123!!";
                 case "Queue Display":
                     return "queuedisplay123!!";
+                case "Admin":
+                    return "admin123!!";
                 default:
                     return "";
             }
