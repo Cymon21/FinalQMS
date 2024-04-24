@@ -1,21 +1,22 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import NotFound from '../components/Notfound.vue';
+import NotFound from '../components/Notfound.vue';
 
 //Pages Admin
 import AdminDashboard from '../components/Admin/Dashboard.vue';
-// import TransactionView from '../components/Admin/Transaction/index.vue';
 import UsersView from '../components/Admin/User/index.vue';
 import UserType from '../components/Admin/UserType/index.vue'
+import Logs from '../components/Admin/Logs/index.vue'
+import Profile from '../components/Admin/Profile/index.vue'
 
 //Guard View
 import GuardView from '../components/Guard/index.vue'
 
 
 const routes = [
-    // {
-    //     path: '/:pathMatch(.*)*',
-    //     component: NotFound,
-    // },
+    {
+        path: '/:pathMatch(.*)*',
+        component: NotFound,
+    },
     {
         path: '/dashboard',
         name: 'dashboard',
@@ -30,6 +31,16 @@ const routes = [
         path: '/usertype',
         name: 'usertype',
         component: UserType
+    },
+    {
+        path: '/logs',
+        name: 'logs',
+        component: Logs
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: Profile
     },
     // Guard View
     {

@@ -114,7 +114,6 @@ export default {
                     Swal.showLoading();
                 },
             });
-
             try {
                 const response = await axios.put(
                     "/api/user/put/" + id,
@@ -129,7 +128,7 @@ export default {
                     icon: "success",
                     title: "User has been verified!",
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 2000,
                 });
 
                 this.$emit("displayVerifiedUsers");

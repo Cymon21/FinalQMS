@@ -81,7 +81,7 @@
         <add-user-modal @displayUsers="displayUsers"></add-user-modal>
         <!-- Call the (Props Name) -->
         <verify-user-modal :selected_user="selected_user" @displayVerifiedUsers="displayUsers"></verify-user-modal>
-        <edit-user-modal :edit_user="edit_user"></edit-user-modal>
+        <edit-user-modal :edit_user="edit_user" @updatedUsers="displayUsers"></edit-user-modal>
     </div>
 </template>
 
@@ -125,6 +125,8 @@ export default {
                     console.log(error);
                 });
         },
+       
+
         showModal() {
             //To show the modal, need kuhaon first iyang id to call the child(modal) from the parent
             $("#add-user-modal").modal("show");
@@ -135,7 +137,6 @@ export default {
             $("#verify-user-modal").modal("show");
         },
         editUser(edit_user) {
-            // console.log(edit_user);
             this.edit_user = edit_user;
             $("#edit-user-modal").modal("show");
         },

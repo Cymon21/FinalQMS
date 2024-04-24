@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterStoreRequest;
 // use Session;
@@ -35,11 +36,12 @@ class AuthenticationController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Authentication was successful
             $user = Auth::user();
 
             if ($user->status == 'Unverified') {
                 return redirect()->route('unverified.dashboard');
+            }elseif ($user->role == 'admin') {
+                return redirect()->route('AdminDash');
             } else {
                 switch ($user->usertype_id) {
                     case 1:
@@ -50,14 +52,11 @@ class AuthenticationController extends Controller
                         return redirect()->route('guard.dashboard');
                     case 4:
                         return redirect()->route('queuedisplay.dashboard');
-                    case 5:
-                        return redirect()->route('AdminDash');
                     default:
                         return redirect()->route('unverified.dashboard');
                 }
             }
         } else {   
-            // Authentication failed
             return redirect()->back()->withInput($request->only('email'))->withErrors([
                 'email' => 'These credentials does not match.'
             ]);

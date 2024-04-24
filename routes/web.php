@@ -36,6 +36,8 @@ Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout
 Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserValidate']);
 
 //Admin Main
+Route::group(['middleware' => 'alreadylogin'], function () {
+});
 Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
 
 // User Main

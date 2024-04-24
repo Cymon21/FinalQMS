@@ -38,8 +38,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <span style="text-align: right;"><a href="{{ route('auth.forgotpassword') }}">Forgot
-                                Password?</a></span>
+                        <span style="text-align: right;"><a href="{{ route('auth.forgotpassword') }}">Forgot Password?</a></span>
                     </div>
                     <div class="form-group">
                         <button type="submit">Sign In</button>

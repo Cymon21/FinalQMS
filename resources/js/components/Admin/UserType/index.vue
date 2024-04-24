@@ -1,14 +1,11 @@
 <template>
-    <div>
         <div class="container-fluid">
-            <div class="admin-sub-title mb-3">
-                <h3>Usertype</h3>
-            </div>
             <div class="table-responsive-xl">
                 <div class="table-header mb-1">
-                    <button class="btn btn-primary btn-sm" @click="showModal">
+                    <h3>Usertype</h3>
+                    <button class="btn btn-primary" @click="showTypeModal">
                         <i class="las la-plus-circle"></i>
-                        <span>Add</span>
+                        <span>Add New User Type</span>
                     </button>
                 </div>
 
@@ -16,8 +13,8 @@
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
-                            <th scope="col">Created</th>
-                            <th scope="col">Upated</th>
+                            <th scope="col">Date Created</th>
+                            <th scope="col">Date Updated</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -37,6 +34,7 @@
                                     <button
                                         type="button"
                                         class="btn btn-danger"
+                                        @click="deleteUserType(userType.id)"
                                     >
                                         <div type="delete">
                                             <i class="las la-trash"></i>
@@ -51,38 +49,37 @@
             </div>
 
             <!-- <_____Manage Designation_____> -->
-
-            <div class="admin-sub-title mb-3">
-                <h3>Designation</h3>
-            </div>
             <div class="table-responsive">
                 <div class="table-header mb-1">
-                    <button class="btn btn-primary btn-sm" @click="showModal">
+                    <h3>Designation</h3>
+                    <button class="btn btn-primary" @click="showDesignationModal">
                         <i class="las la-plus-circle"></i>
-                        <span>Add</span>
+                        <span>Add New Designation</span>
                     </button>
                 </div>
 
                 <table class="table table-borderless table-responsive table-xl">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Created</th>
-                            <th scope="col">Upated</th>
+                            <th scope="col">Assigned Users</th>
+                            <th scope="col">Designation</th>
+                            <th scope="col">Date Created</th>
+                            <th scope="col">Date Updated</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider table-info">
-                        <tr v-for="designation in designation" :key="designation.id">
+                        <tr
+                            v-for="designation in designation"
+                            :key="designation.id"
+                        >
+                            <td>{{ designation.user_type?.name }}</td>
                             <td>{{ designation.name }}</td>
                             <td>{{ designation.created_at_formated }}</td>
                             <td>{{ designation.updated_at_formated }}</td>
                             <td>
                                 <div class="actions-btns">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-info"
-                                    >
+                                    <button type="submit" class="btn btn-info">
                                         <div class="submit">
                                             <i class="las la-edit"></i>
                                             <span>Edit</span>
@@ -91,6 +88,7 @@
                                     <button
                                         type="button"
                                         class="btn btn-danger"
+                                        @click="deleteDesignation(designation.id)"
                                     >
                                         <div type="delete">
                                             <i class="las la-trash"></i>
@@ -103,10 +101,10 @@
                     </tbody>
                 </table>
             </div>
+            <!-- dapat align sya sa imong components na gi add for example (AddUserModal) this could be a <add-user-modal>-->
+            <add-user-type @displayUserType="displayUserType"></add-user-type>
+            <add-designation @displayDesignation="displayDesignation"></add-designation>
         </div>
-
-        <!-- <add-user-modal></add-user-modal> -->
-    </div>
 </template>
 
 <style scoped>
@@ -114,9 +112,14 @@
 </style>
 
 <script>
-import axios from 'axios';
-
+import AddUserType from "../UserType/AddUserType.vue";
+import AddDesignation from "./AddDesignation.vue";
+import axios from "axios";
 export default {
+    components:{
+        AddUserType,
+        AddDesignation,
+    },
     data() {
         return {
             usertype: [],
@@ -124,24 +127,109 @@ export default {
         };
     },
     methods: {
+        //Fetch Data Section
         displayUserType() {
-            axios.get("api/userType/display").then((response) =>{
-                this.usertype = response.data;
-            }).catch((error) =>{
-                console.log(error);
-            });
+            axios
+                .get("api/userType/display")
+                .then((response) => {
+                    this.usertype = response.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         },
         displayDesignation() {
-            axios.get("api/designation/display").then((response) =>{
-                this.designation = response.data;
-            }).catch((error) =>{
-                console.log(error);
-            });
+            axios
+                .get("api/designation/display")
+                .then((response) => {
+                    this.designation = response.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+
+        //Modals
+        showTypeModal(){
+            $("#add-usertype-modal").modal("show");
+        },
+        showDesignationModal(){
+            $("#add-designation-modal").modal("show");
+        },
+
+    //Delete Data Section
+        deleteUserType(id) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            })
+                .then((data) => {
+                    if (data.isConfirmed) {
+                        axios
+                            //always need ang id for calling the delete function ;)
+                            .delete("/api/userType/type/delete/" + id)
+                            .then((response) => {
+                                Swal.fire(
+                                    "Remove!",
+                                    "Usertype has been remove.",
+                                    "success"
+                                );
+                                this.displayUserType();
+                            });
+                    }
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        icon: "error",
+                        text: "Something went wrong!",
+                    });
+                    console.log(error);
+                });
+
+        },
+
+        deleteDesignation(id) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            })
+                .then((data) => {
+                    if (data.isConfirmed) {
+                        axios
+                            //always need ang id for calling the delete function ;)
+                            .delete("/api/designation/assign/delete/" + id)
+                            .then((response) => {
+                                Swal.fire(
+                                    "Remove!",
+                                    "Designation has been remove.",
+                                    "success"
+                                );
+                                this.displayDesignation();
+                            });
+                    }
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        icon: "error",
+                        text: "Something went wrong!",
+                    });
+                    console.log(error);
+                });
         },
     },
     mounted() {
         this.displayUserType();
-        this.displayDesignation()
+        this.displayDesignation();
     },
 };
 </script>

@@ -11,5 +11,11 @@ class UserType extends Model
 
     protected $table = 'usertype';
 
-   
+    protected $fillable = [
+        'id',
+        'name',
+        'created_at',
+        'updated_at'
+    ];
+    
 }

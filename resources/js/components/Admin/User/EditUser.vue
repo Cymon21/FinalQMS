@@ -56,7 +56,6 @@
                                 v-for="desig in designation"
                                 :key="desig.id"
                                 :value="desig"
-                                selected
                             >
                                 {{ desig.name }}
                             </option>
@@ -71,7 +70,13 @@
                     >
                         Close
                     </button>
-                    <button type="submit" class="btn btn-success">Done</button>
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                        @click="updateUser(user.id)"
+                    >
+                        Done
+                    </button>
                 </div>
             </div>
         </div>
@@ -96,7 +101,46 @@ export default {
         };
     },
     methods: {
-        // updateUser(id){},
+        async updateUser(id) {
+            this.user.usertype_id = this.selectedUserType?.id;
+            this.user.designation_id = this.selectedDesig?.id;
+
+            const pleaseWaitAlert = Swal.fire({
+                title: "Please wait...",
+                allowOutsideClick: false,
+                onRender: () => {
+                    Swal.showLoading();
+                },
+            });
+            try {
+                const response = await axios.put(
+                    "/api/user/edit/put/" + id,
+                    this.user
+                );
+                pleaseWaitAlert.close();
+                $("#edit-user-modal").modal("hide");
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "User has been updated!",
+                    showConfirmButton: false,
+                    timer: 2000,
+                });
+                
+                this.$emit("updatedUsers");
+            } catch (error) {
+                console.log(error);
+                pleaseWaitAlert.close();
+
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Error verifying user",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
+        },
         displayUserType() {
             axios
                 .get("/api/usertype")
@@ -128,8 +172,8 @@ export default {
                 this.user.id = val.id;
                 this.user.name = val.name;
                 this.user.email = val.email;
-                this.selectedUserType = val.selectedUserType;
-                this.selectedDesig = val.selectedDesig;
+                this.selectedUserType = val.user_type;
+                this.selectedDesig = val.designation;
             },
             deep: true,
         },

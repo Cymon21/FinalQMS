@@ -18,6 +18,18 @@ class AlreadyLogin
     {
         if (!Auth::check()) {
             return redirect()->route("login");
+        }if (Auth::user()->usertype_id == 1) {
+            return redirect()->route("cashier.dashoboard");
+        }if (Auth::user()->usertype_id == 2) {
+            return redirect()->route("assesor.dashboard");
+        }if (Auth::user()->usertype_id == 3) {
+            return redirect()->route("guard.dashboard");
+        }if (Auth::user()->usertype_id == 4) {
+            return redirect()->route("queuedisplay.dashboard");
+        }if (Auth::user()->usertype_id == 5) {
+            return redirect()->route("AdminDash");
+        }if (Auth::user()->status == 'Unverified') {
+            return redirect()->route("unverified.dashboard");
         }
         return $next($request);
     }

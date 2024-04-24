@@ -50,13 +50,7 @@ class DesignationSeeder extends Seeder
                 'usertype_id' => '4',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            ],
-            [
-                'name' => 'Admin',
-                'usertype_id' => '5',
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            ],
+            ]
         ];
 
         Designation::insert($designation);

@@ -14,6 +14,12 @@ use Mail;
 
 class ManageUserController extends Controller
 {
+
+
+    // public function __construct(){
+    //     $this->middleware("auth/api");
+    // }
+
     /**
      * Display a listing of the resource.
      */
@@ -55,7 +61,9 @@ class ManageUserController extends Controller
      */
     public function show()
     {
-        return User::with('user_type', 'designation')->get();
+        // return User::with('user_type', 'designation')->get();
+        $user = User::where('role', '<>', 'admin')->with('user_type', 'designation')->get();
+        return $user;
     }
 
     public function verify(Request $request, $id)
@@ -99,9 +107,42 @@ class ManageUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        //  dd($user);
+
+        $user_data = User::with('user_type', 'designation')->where('id', $user->id)->first();
+
+        // dd($user_data);
+
+        $mailData = [
+            'Title' => 'Account Updated',
+            'name' => $user_data->name,
+            'email' => $user_data->email,
+            'job' => $user_data->user_type->name,
+            'designation' => $user_data->designation->name,
+            'body' => 'Your account is updated, Please check it out!!',
+            'link' => 'http://127.0.0.1:8000/login'
+        ];
+
+        
+        $result = Mail::to($user->email)->send(new UserEmail($mailData));
+
+        if ($result) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'User verified and email sent successfully',
+                'data' => $user,
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to send email',
+            ], 500);
+        }
     }
 
     /**
