@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guard</title>
+    <title>Queue Display</title>
 
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -32,7 +32,7 @@
                 <nav class="navbar navbar-expand-sm navbar-light navbar-dark align-center">.
                     <div class="container">
                         <div class="logo">
-                            <a href="{{ route('guard.dashboard') }}" class="navbar-brand mb-0 h1  ">
+                            <a href="{{ route('queuedisplay.dashboard') }}" class="navbar-brand mb-0 h1  ">
                                 <img class="d-inline-block align-center" src="{{ asset('images/spc_logo.png') }}"
                                     alt="spc-logo" width="40" height="60">
                             </a>
@@ -41,8 +41,7 @@
                         <div class="profile">
                             <h1>Sample text</h1>
                             <div class="dropdown">
-                                <div class="img-btn" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <div class="img-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <div class="main-image-div">
                                         <img src="{{ asset('images/spc_logo.png') }}" alt="profile-sample">
                                     </div>
@@ -53,17 +52,16 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </nav>
             </div>
         </aside>
         <div class="content-wrapper">
-            <GuardView></GuardView>
+            
             <router-view></router-view>
         </div>
     </div>
-    
+
 
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
