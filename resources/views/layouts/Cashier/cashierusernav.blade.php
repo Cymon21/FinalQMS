@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guard</title>
+    <title>Cashier</title>
 
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -26,13 +26,16 @@
 </head>
 
 <body>
+
+
+
     <div class="wrapper" id="app">
         <aside>
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-sm navbar-light navbar-dark align-center">.
                     <div class="container">
                         <div class="logo">
-                            <a href="{{ route('guard.dashboard') }}" class="navbar-brand mb-0 h1  ">
+                            <a href="{{ route('assesor.dashboard') }}" class="navbar-brand mb-0 h1  ">
                                 <img class="d-inline-block align-center" src="{{ asset('images/spc_logo.png') }}"
                                     alt="spc-logo" width="40" height="60">
                             </a>
@@ -53,7 +56,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </nav>
             </div>
@@ -63,7 +65,7 @@
             <router-view></router-view>
         </div>
     </div>
-    
+
 
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
