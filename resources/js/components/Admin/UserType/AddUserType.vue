@@ -57,10 +57,13 @@ export default {
                 Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "Usertype has been added!",
+                    title: "Job has been added!",
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 1300,
                 });
+                setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
                 this.$emit('displayUserType');
             }).catch((error) =>{
                 console.log(error);

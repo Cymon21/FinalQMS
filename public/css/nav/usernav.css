@@ -3,11 +3,10 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
 }
 
 .container-fluid {
-    background-color: #004f86;
+    background-color: #004f86 !important;
     display: flex !important;
     padding: 10px 10px;
     justify-content: space-between;
@@ -83,7 +82,7 @@ nav {
     max-height: 40px;
 }
 .content-wrapper{
-    overflow: scroll;
+    overflow: hidden;
     height: 100%;
     width: 100%;
 }

@@ -47,6 +47,7 @@
 <script>
 import axios from 'axios';
 export default {
+    props:["getAllUsertype"],
     data(){
         return{
            designation:{
@@ -62,6 +63,13 @@ export default {
                 this.designation.name = '',
                 this.designation.usertype_id = '',
                 $('#add-designation-modal').modal('hide');
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Designation has been successfully added!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
                 this.$emit('displayDesignation');
             }).catch((error) =>{
                 console.log(error);
@@ -73,6 +81,13 @@ export default {
             }).catch((error) =>{
                 console.log(error);
             }); 
+        }
+    },
+    watch:{
+        getAllUsertype: {
+            handler(val){
+                console.log(val);
+            },
         }
     },
     mounted() {

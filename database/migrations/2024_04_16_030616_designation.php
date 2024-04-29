@@ -17,7 +17,7 @@ return new class extends Migration {
                 ->on('usertype')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

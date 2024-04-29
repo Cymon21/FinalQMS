@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('designation_list', function (Blueprint $table) {
+        Schema::create('queue_number', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('designation_name');
+            $table->string('queue_name_number');
             $table->unsignedBigInteger('usertype_id')->nullable();
             $table->timestamps();
-        });
+
+
+            
+            $table->foreign('usertype_id')->references('id')->on('usertype')->onUpdate('cascade')->onDelete('cascade');
+        }); 
     }
 
     /**
@@ -24,6 +28,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('queue_number', function (Blueprint $table) {
+            $table->dropForeign(['usertype_id']);
+
+        });
+
+        Schema::dropIfExists('queue_number');
     }
 };

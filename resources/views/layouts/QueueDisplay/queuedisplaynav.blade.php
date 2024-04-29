@@ -38,20 +38,6 @@
                             </a>
                             <h3>San Pedro College</h3>
                         </div>
-                        <div class="profile">
-                            <h1>Sample text</h1>
-                            <div class="dropdown">
-                                <div class="img-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <div class="main-image-div">
-                                        <img src="{{ asset('images/spc_logo.png') }}" alt="profile-sample">
-                                    </div>
-                                </div>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Profile</a>
-                                    <a class="dropdown-item" href="#">Logout</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </nav>
             </div>

@@ -31,13 +31,13 @@
         </div>
         <div class="table-responsive-xl">
             <div class="table-header mb-1">
-                <h5>List of user type</h5>
+                <h5>List of jobs</h5>
             </div>
             <table class="table table-borderless table-responsive table-xl">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">Job Name</th>
                         <th scope="col">Created</th>
                         <th scope="col">Updated</th>
                     </tr>
@@ -60,7 +60,7 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">Designation</th>
                         <th scope="col">Created</th>
                         <th scope="col">Updated</th>
                     </tr>

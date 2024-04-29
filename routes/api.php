@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ManageUserController;
 use App\Http\Controllers\Admin\ManageUserTypeController;
 use App\Http\Controllers\Admin\LogsController;
+use App\Http\Controllers\Guard\GuardController;
+use App\Http\Controllers\Cashier\CashierController;
+use App\Http\Controllers\Assesor\AssesorController;
+use App\Http\Controllers\QueueDisplay\QueueDisplayController;
 
 
 /*
@@ -47,4 +51,20 @@ Route::group(['middleware' => 'admincheck'], function () {
     Route::get('/userType/displaylogs', [LogsController::class, 'showUserType']);
     Route::get('/designation/displaylogs', [LogsController::class, 'showDesignation']);
 
+
+// Guard
+    Route::get('/guard/get/usertype', [GuardController::class, 'getUsersID']);
+    Route::get('/guard/generate/number/{id}', [GuardController::class, 'generateQueNum']);
+    Route::post('/guard/add/number/{id}', [GuardController::class,'printQueue']);
+//Cashier
+    Route::get('/cashier/get/queueNum', [CashierController::class, 'showQuePending']);
+    Route::get('/cashier/serve/queueNum', [CashierController::class, 'servingQue']);
+    Route::get('/cashier/get/serve/queueNum', [CashierController::class, 'getQue']);
+//Assesor
+    Route::get('/assesor/display/que', [AssesorController::class, 'showAssesorQue']);
+    Route::get('/assesor/get/queNum', [AssesorController::class, 'getAssesorQue']);
+    Route::get('/assesor/end/queNum', [AssesorController::class, 'finishAssesorQue']);
+// Queu Display
+    Route::get('/cashier/queuDisplay', [QueueDisplayController::class,'displayCashierQue']);
+    Route::get('/assesor/queuDisplay', [QueueDisplayController::class,'displayAssesorQue']);
 

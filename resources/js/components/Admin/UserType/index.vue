@@ -1,110 +1,109 @@
 <template>
-        <div class="container-fluid">
-            <div class="table-responsive-xl">
-                <div class="table-header mb-1">
-                    <h3>Usertype</h3>
-                    <button class="btn btn-primary" @click="showTypeModal">
-                        <i class="las la-plus-circle"></i>
-                        <span>Add New User Type</span>
-                    </button>
-                </div>
-
-                <table class="table table-borderless table-responsive table-xl">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Date Created</th>
-                            <th scope="col">Date Updated</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider table-info">
-                        <tr v-for="userType in usertype" :key="userType.id">
-                            <td>{{ userType.name }}</td>
-                            <td>{{ userType.created_at_formated }}</td>
-                            <td>{{ userType.updated_at_formated }}</td>
-                            <td>
-                                <div class="actions-btns">
-                                    <button type="submit" class="btn btn-info">
-                                        <div class="submit">
-                                            <i class="las la-edit"></i>
-                                            <span>Edit</span>
-                                        </div>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="btn btn-danger"
-                                        @click="deleteUserType(userType.id)"
-                                    >
-                                        <div type="delete">
-                                            <i class="las la-trash"></i>
-                                            <span>Delete</span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="container-fluid">
+        <div class="table-responsive-xl">
+            <div class="table-header mb-1">
+                <h3>Jobs</h3>
+                <button class="btn btn-primary" @click="showTypeModal">
+                    <i class="las la-plus-circle"></i>
+                    <span>Add New Job</span>
+                </button>
             </div>
 
-            <!-- <_____Manage Designation_____> -->
-            <div class="table-responsive">
-                <div class="table-header mb-1">
-                    <h3>Designation</h3>
-                    <button class="btn btn-primary" @click="showDesignationModal">
-                        <i class="las la-plus-circle"></i>
-                        <span>Add New Designation</span>
-                    </button>
-                </div>
-
-                <table class="table table-borderless table-responsive table-xl">
-                    <thead>
-                        <tr>
-                            <th scope="col">Assigned Users</th>
-                            <th scope="col">Designation</th>
-                            <th scope="col">Date Created</th>
-                            <th scope="col">Date Updated</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider table-info">
-                        <tr
-                            v-for="designation in designation"
-                            :key="designation.id"
-                        >
-                            <td>{{ designation.user_type?.name }}</td>
-                            <td>{{ designation.name }}</td>
-                            <td>{{ designation.created_at_formated }}</td>
-                            <td>{{ designation.updated_at_formated }}</td>
-                            <td>
-                                <div class="actions-btns">
-                                    <button type="submit" class="btn btn-info">
-                                        <div class="submit">
-                                            <i class="las la-edit"></i>
-                                            <span>Edit</span>
-                                        </div>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="btn btn-danger"
-                                        @click="deleteDesignation(designation.id)"
-                                    >
-                                        <div type="delete">
-                                            <i class="las la-trash"></i>
-                                            <span>Delete</span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- dapat align sya sa imong components na gi add for example (AddUserModal) this could be a <add-user-modal>-->
-            <add-user-type @displayUserType="displayUserType"></add-user-type>
-            <add-designation @displayDesignation="displayDesignation"></add-designation>
+            <table class="table table-borderless table-responsive table-xl">
+                <thead>
+                    <tr>
+                        <th scope="col">Job Name</th>
+                        <th scope="col">Date Created</th>
+                        <th scope="col">Date Updated</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider table-info">
+                    <tr v-for="userType in usertype" :key="userType.id">
+                        <td>{{ userType.name }}</td>
+                        <td>{{ userType.created_at_formated }}</td>
+                        <td>{{ userType.updated_at_formated }}</td>
+                        <td>
+                            <div class="actions-btns">
+                                <button type="submit" class="btn btn-info">
+                                    <div class="submit">
+                                        <i class="las la-edit"></i>
+                                        <span>Edit</span>
+                                    </div>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    @click="deleteUserType(userType.id)"
+                                >
+                                    <div type="delete">
+                                        <i class="las la-trash"></i>
+                                        <span>Delete</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+
+        <!-- <_____Manage Designation_____> -->
+        <div class="table-responsive">
+            <div class="table-header mb-1">
+                <h3>Designation</h3>
+                <button class="btn btn-primary" @click="showDesignationModal">
+                    <i class="las la-plus-circle"></i>
+                    <span>Add New Designation</span>
+                </button>
+            </div>
+
+            <table class="table table-borderless table-responsive table-xl">
+                <thead>
+                    <tr>
+                        <th scope="col">Assigned Users</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Date Created</th>
+                        <th scope="col">Date Updated</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider table-info">
+                    <tr v-for="item in designation" :key="item.id">
+                        <td>{{ item.user_type?.name }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.created_at_formated }}</td>
+                        <td>{{ item.updated_at_formated }}</td>
+                        <td>
+                            <div class="actions-btns">
+                                <button type="submit" class="btn btn-info">
+                                    <div class="submit">
+                                        <i class="las la-edit"></i>
+                                        <span>Edit</span>
+                                    </div>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    @click="deleteDesignation(item.id)"
+                                >
+                                    <div type="delete">
+                                        <i class="las la-trash"></i>
+                                        <span>Delete</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- dapat align sya sa imong components na gi add for example (AddUserModal) this could be a <add-user-modal>-->
+        <add-user-type @displayUserType="displayUserType"></add-user-type>
+        <add-designation
+            @displayDesignation="displayDesignation"
+        ></add-designation>
+    </div>
 </template>
 
 <style scoped>
@@ -116,7 +115,7 @@ import AddUserType from "../UserType/AddUserType.vue";
 import AddDesignation from "./AddDesignation.vue";
 import axios from "axios";
 export default {
-    components:{
+    components: {
         AddUserType,
         AddDesignation,
     },
@@ -150,14 +149,14 @@ export default {
         },
 
         //Modals
-        showTypeModal(){
+        showTypeModal() {
             $("#add-usertype-modal").modal("show");
         },
-        showDesignationModal(){
+        showDesignationModal() {
             $("#add-designation-modal").modal("show");
         },
 
-    //Delete Data Section
+        //Delete Data Section
         deleteUserType(id) {
             Swal.fire({
                 title: "Are you sure?",
@@ -179,6 +178,9 @@ export default {
                                     "Usertype has been remove.",
                                     "success"
                                 );
+                                setTimeout(() => {
+                                    window.location.reload();
+                                }, 1000);
                                 this.displayUserType();
                             });
                     }
@@ -190,7 +192,6 @@ export default {
                     });
                     console.log(error);
                 });
-
         },
 
         deleteDesignation(id) {

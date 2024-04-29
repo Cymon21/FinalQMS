@@ -61,7 +61,7 @@
             </div>
         </aside>
         <div class="content-wrapper">
-            <GuardView></GuardView>
+            <CashierView></CashierView>
             <router-view></router-view>
         </div>
     </div>
