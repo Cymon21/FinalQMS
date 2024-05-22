@@ -1,18 +1,21 @@
 .image-container{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 10px 30px;
+  
 }
 .image-container img{
-    max-width: 80px;
-    max-height: 60px;
+    width: 159px;
+    height: 170px;
     cursor: pointer;
 }
 .image-container h2{
     color: var(--white-text-color);
     font-family: 'Lora';
     font-weight: bold;
-    font-size: 3vh;
     margin-left: 10px;
     cursor: default;
+}
+.a{
+    height: 100%;
 }

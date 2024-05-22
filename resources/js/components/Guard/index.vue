@@ -1,4 +1,47 @@
 <template>
+    <div class="content-wrapper">
+        <div class="button-wrapper">
+            <div class="card card btn btn-outline-dark">Cashier</div>
+            <div class="card btn btn-outline-dark d-flex flex-row">
+              Assesor
+            </div>
+            
+        </div>
+
+        <div class="view-wrapper">
+            <div class="view-queue card">
+                <div class="view-queue-name display-3">Cashier</div>
+                <div class="view-queue-number display-1">1</div>
+            </div>
+            <div class="view-button">
+                <button class="btn btn-outline-light"><i class="fa-solid fa-print"></i><div class="display-5">Print</div></button>
+            </div>
+        </div>
+    </div>
+</template>
+<style>
+@import "/resources/css/guard/guard.css";
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <template>
     <div class="container">
         <div class="content1">
             <div class="childcontent1">
@@ -25,7 +68,6 @@
                 </div>
             </div>
         </div>
-        <!-- <____content2___________> -->
         <div class="content2">
             <div class="container">
                 <div class="childcontent2">
@@ -104,4 +146,4 @@ export default {
 
 <style scoped>
 @import "/resources/css/guard/guard.css";
-</style>
+</style> -->
