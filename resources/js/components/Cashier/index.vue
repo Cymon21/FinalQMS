@@ -1,71 +1,68 @@
 <template>
-    <div class="container-fluid">
-        <aside class="content1">
-            <div class="childcontent1">
-                <div class="btn card Cashier1">Cashier1</div>
-                <div class="btn card Cashier2">Cashier2</div>
-                <div class="btn card FinanceAssesor1">FinanceAssesor1</div>
-                <div class="btn card FinanceAssesor2">FinanceAssesor2</div>
-                <div class="btn card Finish" @click="caterFinishQueNumber()">
-                    Finish
-                </div>
-                <div class="btn card Start" @click="caterQueNumber()">
-                    Start
-                </div>
+    <div class="content-wrapper">
+        <div class="view-button-wrapper">
+            <div class="button-wrapper">
+                <div class="card diplay-5">Cashier</div>
+                <div class="card diplay-5">Assesor</div>
+                <div class="card diplay-5" @click="finishCaterQue()">Finish</div>
+                <div class="card diplay-5" @click="startQue()">Start</div>
             </div>
-        </aside>
-        <div class="content2">
-            <div class="card">
-                <div class="childcontent2">
-                    <div class="navchildcontent2">
-                        <h2>Cashier</h2>
-
-                        <div class="btn-group dropdown">
+        </div>
+        <div class="view-wrapper">
+            <div class="view-que-wrapper">
+                <div class="que-wrapper">
+                    <div class="top-view">
+                        <div class="display-5">Cashier</div>
+                        <div class="dropend">
                             <button
+                                class="btn btn-secondary btn-light fs-10 dropdown-toggle"
                                 type="button"
-                                class="btn btn-secondary dropdown-toggle"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
+                                data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
                                 Status
                             </button>
-
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Onbreak</a>
-                                <a class="dropdown-item" href="#"
-                                    >Currently Serve</a
-                                >
-                            </div>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#"
+                                        >On Serve</a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#"
+                                        >On Break</a
+                                    >
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <div class="contentchildcontent2">
-                        <div class="card content2child2">
-                            <h3>Now Serving</h3>
-                            <h1>{{ currentServing }}</h1>
-                        </div>
-
-                        <div class="footerchildcontent2">
-                            <h4>Status:</h4>
-                            <h2>Currently Serving</h2>
+                    <div class="que-content">
+                        <div class="display-4">Now Serving</div>
+                        <div class="display-1">1</div>
+                    </div>
+                    <div class="bottom-view footer">
+                        <div class="display-5 bottom-display">Status:</div>
+                        <div
+                            class="display-5 text-success fw-bold bottom-display"
+                        >
+                            Onserve
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <aside class="content3">
-            <div class="childcontent3">
-                <div class="caption">
-                    <i class='bx bx-sync' @click="reloadData()"></i>
-                    <h3>Pending Queue</h3>
-                </div>
-                <div class="tablecontent">
-                    <table class="table caption-top">
-                        <thead></thead>
+            <div class="pending-que-wrapper">
+                <div class="pending-wrapper">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="display-3" @click="reloadData()">
+                                    Pending QUE's
+                                </th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr v-for="items in cashierPending" :key="items.id">
-                                <td style="font-size: 18px; font-weight: 600">
+                            <tr v-for="items in assesorPending" :key="items.id">
+                                <td>
                                     {{ items.queue_name_number }}
                                 </td>
                             </tr>
@@ -73,7 +70,7 @@
                     </table>
                 </div>
             </div>
-        </aside>
+        </div>
     </div>
 </template>
 <style scoped>

@@ -1,29 +1,127 @@
 <template>
-    <div class="container">
-        <div class="parent1">
-            <div class="card" v-for="items in queCashier" :key="items.id">
-                <div class="content1">
-                    <h3 style="color: black">{{ items.designation.name }}</h3>
-                </div>
-                <div class="content2">
-                    <h1>1</h1>
-                    <h3>Currently serving</h3>
-                </div>
+    <div class="display-wrapper">
+        <div class="card" >
+            <div class="card-title display-6 p-0 mt-4">
+                cashier
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Serving
             </div>
         </div>
-        <div class="parent2">
-            <div class="card" v-for="items in queAssesor" :key="items.id">
-                <div class="content1">
-                    <h3 style="color: black">{{ items.designation.name }}</h3>
-                </div>
-                <div class="content2">
-                    <h1>4</h1>
-                    <h3>Currently serving</h3>
-                </div>
+        <div class="card" >
+            <div class="card-title display-6 p-0 mt-4">
+                cashier
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Serving
+            </div>
+        </div>
+        <div class="card" >
+            <div class="card-title display-6 p-0 mt-4">
+                cashier
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Serving
+            </div>
+        </div>
+        <div class="card" >
+            <div class="card-title display-6 p-0 mt-4">
+                cashier
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Serving
+            </div>
+        </div>
+        <div class="card" >
+            <div class="card-title display-6 p-0 mt-4">
+                cashier
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Serving
+            </div>
+        </div>
+        <div class="card" >
+            <div class="card-title display-6 p-0 mt-4">
+                cashier
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Serving
+            </div>
+        </div>
+        <div class="card" >
+            <div class="card-title display-6 p-0 mt-4">
+                cashier
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Serving
+            </div>
+        </div>
+        <div class="card" >
+            <div class="card-title display-6 p-0 mt-4">
+                cashier
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Serving
+            </div>
+        </div>
+        
+        <div class="card" v-for="items in queAssesor" :key="items.id">
+            <div class="card-title display-6 p-0 mt-4">
+                {{ items.designation.name }}
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-danger fw-bold d-flex justify-content-center bg-light fs-4"
+            >
+                On Break
             </div>
         </div>
     </div>
 </template>
+
+
 <style scoped>
 @import "/resources/css/queue/queue.css";
 </style>
@@ -49,13 +147,16 @@ export default {
                     console.log(error);
                 });
         },
-        GetQueAssesor(){
-            axios.get("/api/assesor/queuDisplay").then((response) =>{
-                this.queAssesor = response.data;
-            }).catch((error)=>{
-                console.log(error);
-            });
-        }
+        GetQueAssesor() {
+            axios
+                .get("/api/assesor/queuDisplay")
+                .then((response) => {
+                    this.queAssesor = response.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
     },
     mounted() {
         this.GetQueCashier();

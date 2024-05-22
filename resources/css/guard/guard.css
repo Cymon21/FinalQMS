@@ -1,139 +1,123 @@
-.container {
-    background-color: transparent !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    height: 100% !important;
-   
-
-}
-
-.childcontent1 {
-    width: 100%;
-    height: inherit;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.card1,
-.card2 {
-    height: 30% !important;
-    width: 30%;
-    border-radius: 30px !important;
-    background-color: #ffffff;
-    box-shadow: 24px 24px 48px #9d9d9d,
-        -24px -24px 48px #ffffff;
-    border: none !important;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-
-}
-.card1 h1 ,.card2 h1{
-    font-family: lato;  
-    font-weight: 600;
-}
-
-.card1 {
-    margin-right: 50px;
-
-}
-
-.card1 i,
-.card2 i {
-    color: black;
-}
-
-/* <------------------Content2--------------------------> */
 .content-wrapper {
-    height: 100%;
-    overflow-y: hidden;
-}
-
-.content1,
-.content2 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-   
-}
-.content2 .container{
-    height: fit-content !important;
-    width: 100%;
-}
-.childcontent2 {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
+    height: 100% !important;
+}
+
+.button-wrapper {
+    width: 40%;
+    height: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    margin-left: 5rem;
+
+}
+
+.button-wrapper .card {
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-family: "roboto";
+}
+
+.button-wrapper .card:hover{
+    background-color: #003e6e !important;
+    color:aliceblue !important;
+}
+.view-wrapper {
+    display: flex;
+    width: 60%;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
 }
 
-.childbutton button {
-    cursor: pointer;
-    width: 80%;
-    min-height: 5rem !important;
-    background: #002445 !important;
-    color: white;
-    font-family: lato;
-    font-size: 2rem;
-    border-radius: 10px 10px;
-}
-
-.childbutton{
+.view-queue {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 50%;
+    border: transparent;
     width: 100%;
-    text-align: center;
-    border: 10px;
-    border-color: 1px solid #004f86;
-    width: 70%;
-    text-align: center;
-}
-.childbutton button:hover {
-background: #005EAD !important;
 }
 
-.quenumber h3 {
-    color: #00406D99;
-
+.view-queue-number {
+    height: 70%;
+    font-size: 10rem;
 }
 
-.quenumber h2,
-.quenumber h3 {
-    margin: 0;
-    font-size: 2rem;
-
-}
-
-.quenumber h1,
-h2,
-h3 {
-    margin: 0;
-    font-size: 15vw;
-    font-family: lato;
-    color: #002445;
-    cursor: default;
-}
-
-.qeunumbercontent {
+.view-queue-name {
+    height: 30%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    text-align: center;
-    margin-left: 10px;
-}
-
-.quenumber {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+}
+
+.view-button {
+    display: flex;
     justify-content: center;
-    
+    align-items: center;
+    width: 80%;
+    height: auto;
+    padding-top: 10%;
+}
+
+.view-button .btn {
+    width: 100%;
+    height: 6rem;
+    background-color: #003e6e;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.view-button .btn .display-5{
+    font-size: 2rem;
+    font-family: "roboto";
+    font-weight: bold;
+    padding: 10px;
+} 
+ .btn:hover{
+    color:white !important;
+}
+
+@media(max-width:425px) {
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .button-wrapper {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        overflow-y: scroll;
+        margin-left: 0;
+    }
+
+
+
+    .view-wrapper {
+        display: flex;
+        width: 70%;
+        height: 100%;
+        align-items: center;
+        flex-direction: column;
+        justify-content: start;
+    }
 
 }
