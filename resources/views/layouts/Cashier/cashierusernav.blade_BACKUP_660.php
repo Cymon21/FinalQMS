@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guard</title>
+    <title>Cashier</title>
 
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,17 +21,41 @@
         rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('images/spc_logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/nav/guardpublic.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav/cashierpublic.css') }}">
     <script src="https://kit.fontawesome.com/45e9201bc9.js" crossorigin="anonymous"></script>
 
     @vite('resources/sass/app.scss')
 </head>
 
-<body class="vh-100 overflow-hidden">
+<body class="overflow-hidden">
     <div class="wrapper" id="app">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <div class="container-fluid">
+<<<<<<< HEAD
+                <nav class="navbar navbar-expand-sm navbar-light navbar-dark align-center">.
+                    <div class="container">
+                        <div class="logo">
+                            <a href="{{ route('assesor.dashboard') }}" class="navbar-brand mb-0 h1  ">
+                                <img class="d-inline-block align-center" src="{{ asset('images/spc_logo.png') }}"
+                                    alt="spc-logo" width="40" height="60">
+                            </a>
+                            <h3>San Pedro College</h3>
+                            <a href="{{ route('logout') }}" class="nav-link ms-5 pointer">
+                                <div class="linknav">
+                                   <i class='bx bx-log-out-circle'></i>
+                                    <span class="name">Logout</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="profile">
+                            @if (Auth::check())
+                            <h1>{{ Auth::user()->name }}</h1>
+                            @endif
+                            <div class="dropdown">
+                                <div class="img-btn" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+=======
                 <!-- logo -->
                 <a class="navbar-brand m-0" href="#">
 
@@ -78,6 +103,7 @@
                                     data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 
                                     <div class="display-6">Profile</div>
+>>>>>>> origin/UIreponsive
                                     <div class="main-image-div">
                                         <img src="{{ asset('images/spc_logo.png') }}" alt="profile-sample">
                                     </div>
