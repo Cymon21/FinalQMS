@@ -37,9 +37,17 @@
                                     alt="spc-logo" width="40" height="60">
                             </a>
                             <h3>San Pedro College</h3>
+                            <a href="{{ route('logout') }}" class="nav-link ms-5 pointer">
+                                <div class="linknav">
+                                   <i class='bx bx-log-out-circle'></i>
+                                    <span class="name">Logout</span>
+                                </div>
+                            </a>
                         </div>
                         <div class="profile">
-                            <h1>Sample text</h1>
+                            @if (Auth::check())
+                                <h1>{{ Auth::user()->name }}</h1>
+                            @endif
                             <div class="dropdown">
                                 <div class="img-btn" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">

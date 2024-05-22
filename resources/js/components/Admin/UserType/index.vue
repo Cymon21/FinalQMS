@@ -129,8 +129,9 @@ export default {
         //Fetch Data Section
         displayUserType() {
             axios
-                .get("api/userType/display")
+                .get("/api/usertype/display")
                 .then((response) => {
+                    console.log(response);
                     this.usertype = response.data;
                 })
                 .catch((error) => {
@@ -139,11 +140,12 @@ export default {
         },
         displayDesignation() {
             axios
-                .get("api/designation/display")
+                .get("/api/designation/display")
                 .then((response) => {
+                    console.log(response);
                     this.designation = response.data;
                 })
-                .catch((error) => {
+            .catch((error) => {
                     console.log(error);
                 });
         },

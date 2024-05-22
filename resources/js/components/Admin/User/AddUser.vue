@@ -161,7 +161,7 @@ export default {
             switch (usertype?.name) {
                 case "Cashier":
                     return "cashier123!!";
-                case "Assesor":
+                case "Finance Assesor":
                     return "assesor123!!";
                 case "Guard":
                     return "guard123!!";

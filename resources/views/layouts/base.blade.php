@@ -27,8 +27,9 @@
         @yield('content')
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('sweetalert::alert')
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>

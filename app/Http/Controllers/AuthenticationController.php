@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterStoreRequest;
-// use Session;
 use Illuminate\Support\Facades\Session;
 
 class AuthenticationController extends Controller
@@ -39,24 +38,31 @@ class AuthenticationController extends Controller
             $user = Auth::user();
 
             if ($user->status == 'Unverified') {
-                return redirect()->route('unverified.dashboard');
+                Alert::error('Login Failed', 'Your acccount is not verified.')->persistent(true);
+                return redirect()->back()->withErrors(['email' => 'Your acccount is not verified.']);
             }elseif ($user->role == 'admin') {
+                $request->session()->put('ss_id', $user->id);
+                Alert::success('Login Successfuly', 'Welcome Admin', $user->name)->persistent('true');
                 return redirect()->route('AdminDash');
             } else {
                 switch ($user->usertype_id) {
                     case 1:
+                        $request->session()->put('ss_id', $user->id);
                         return redirect()->route('cashier.dashboard');
                     case 2:
+                        $request->session()->put('ss_id', $user->id);
                         return redirect()->route('assesor.dashboard');
                     case 3:
+                        $request->session()->put('ss_id', $user->id);
                         return redirect()->route('guard.dashboard');
                     case 4:
                         return redirect()->route('queuedisplay.dashboard');
                     default:
-                        return redirect()->route('unverified.dashboard');
+                        break;
                 }
             }
         } else {   
+            Alert::error('Login Failed', 'These credentials does not match.')->persistent(true);
             return redirect()->back()->withInput($request->only('email'))->withErrors([
                 'email' => 'These credentials does not match.'
             ]);
@@ -98,8 +104,8 @@ class AuthenticationController extends Controller
     public function logout(Request $request)
     {
         Session::flush();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        Session::pull('ss_id');
+        Alert::success('Logout Successfully', 'You have successfully logout.')->persistent('true');
         return redirect('/login');
     }
 }

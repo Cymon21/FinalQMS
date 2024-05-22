@@ -26,8 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'admincheck'], function () {
-});
+
 //Admin Manage User
     Route::get('/user/display', [ManageUserController::class, 'show']);
     Route::get('/usertype', [ManageUserController::class, 'usertypeBasis']);
@@ -38,7 +37,7 @@ Route::group(['middleware' => 'admincheck'], function () {
     Route::put('/user/edit/put/{id}', [ManageUserController::class, 'update']);
 
 //Admin Manage User Type
-    Route::get('/userType/display', [ManageUserTypeController::class, 'showUserType']);
+    Route::get('/usertype/display', [ManageUserTypeController::class, 'showUserType']);
     Route::get('/designation/display', [ManageUserTypeController::class, 'showDesignation']);
     Route::get('/usertype/add/display', [ManageUserTypeController::class,'displayUserType']);
     Route::delete('/userType/type/delete/{id}', [ManageUserTypeController::class, 'destroyUsertype']);

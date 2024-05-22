@@ -22,56 +22,57 @@ import QueView from '../components/Queuedisplay/index.vue'
 
 
 const routes = [
+
+    //Admin View
     {
-        path: '/:pathMatch(.*)*',
-        component: NotFound,
-    },
-    {
-        path: '/dashboard',
+        path: '/admin/dashboard',
         name: 'dashboard',
         component: AdminDashboard
     },
+
     {
-        path: '/user',
+        path: '/admin/user',
         name: 'user',
         component: UsersView
     },
     {
-        path: '/usertype',
+        path: '/admin/usertype',
         name: 'usertype',
         component: UserType
     },
     {
-        path: '/logs',
+        path: '/admin/logs',
         name: 'logs',
         component: Logs
     },
     {
-        path: '/profile',
+        path: '/admin/profile',
         name: 'profile',
         component: Profile
     },
+    //Admin View Ended
+
     // Guard View
     {
-        path: '/guard',
+        path: '/guard/dashboard',
         name: 'guard',
         component: GuardView
     },
     //Cashier View
     {
-        path: '/cashier',
+        path: '/cashier/dashboard',
         name: 'cashier',
         component: CashierView
     },
     //Assesor View
     {
-        path: '/assesor',
+        path: '/assesor/dashboard',
         name: 'assesor',
         component: AssesorView
     },
     //Queue View
     {
-        path: '/queuedisplay',
+        path: '/queuedisplay/dashboard',
         name: 'queuedisplay',
         component: QueView
     },

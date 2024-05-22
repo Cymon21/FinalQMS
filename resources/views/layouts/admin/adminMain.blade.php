@@ -37,7 +37,7 @@
                  <ul class="nav nav-pills nav-sidebar flex-column">
                      <div class="navbar-div">
                          <li class="nav-item">
-                             <router-link to="/dashboard" class="nav-link">
+                             <router-link to="/admin/dashboard" class="nav-link">
                                  <div class="linknav">
                                     <i class='bx bxs-dashboard'></i>
                                      <span>Dashboard</span>
@@ -47,7 +47,7 @@
                      </div>
                      <div class="navbar-div">
                          <li class="nav-item">
-                             <router-link to="/user" class="nav-link">
+                             <router-link to="/admin/user" class="nav-link">
                                  <div class="linknav">
                                      <i class='bx bx-user-circle'></i>
                                      <span>User</span>
@@ -57,7 +57,7 @@
                      </div>
                      <div class="navbar-div">
                          <li class="nav-item">
-                             <router-link to="/usertype" class="nav-link">
+                             <router-link to="/admin/usertype" class="nav-link">
                                  <div class="linknav">
                                     <i class='bx bx-category'></i>
                                      <span>Manage User Type</span>
@@ -67,7 +67,7 @@
                      </div>
                      <div class="navbar-div">
                          <li class="nav-item">
-                             <router-link to="/logs" class="nav-link">
+                             <router-link to="/admin/logs" class="nav-link">
                                  <div class="linknav">
                                     <i class='bx bxs-report'></i>
                                      <span>Logs</span>
@@ -77,7 +77,7 @@
                      </div>
                      <div class="navbar-div">
                          <li class="nav-item">
-                             <router-link to="/profile" class="nav-link">
+                             <router-link to="/admin/profile" class="nav-link">
                                  <div class="linknav">
                                     <i class='bx bxs-user-detail'></i>
                                      <span>Profile</span>
@@ -104,6 +104,7 @@
      </div>
      @vite('resources/js/app.js')
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     @include('sweetalert::alert')
      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

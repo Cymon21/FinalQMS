@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\RestrictedRoutesController;
 
 //Auth Section
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -36,22 +37,20 @@ Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout
 Route::post('/storeUserValidate', [AuthenticationController::class, 'storeUserValidate']);
 
 //Admin Main
-Route::group(['middleware' => 'alreadylogin'], function () {
-});
-Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboard'])->name('AdminDash');
 
 // User Main
 
-Route::get('/guard', [GuardController::class, 'index'])->name('guard.dashboard');
-Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.dashboard');
-Route::get('/assesor', [AssesorController::class, 'index'])->name('assesor.dashboard');
-Route::get('/queuedisplay', [QueueDisplayController::class, 'index'])->name('queuedisplay.dashboard');
+Route::get('/guard/dashboard', [GuardController::class, 'index'])->name('guard.dashboard');
+Route::get('/cashier/dashboard', [CashierController::class, 'index'])->name('cashier.dashboard');
+Route::get('/assesor/dashboard', [AssesorController::class, 'index'])->name('assesor.dashboard');
+Route::get('/queuedisplay/dashboard', [QueueDisplayController::class, 'index'])->name('queuedisplay.dashboard');
 
-//Unverified Users
-Route::get('/unverified', [UnverifiedUsersContoller::class, 'index'])->name('unverified.dashboard');
 
-//Not Found
-Route::get('/{pathMatch}', function () {
-    return view('home');
-})->where('pathMatch',".*");
+//Restricted Routes
+    Route::get('/admin/{path}', [RestrictedRoutesController::class, 'indexAdmin'])->where('any', '^(?!js/).*')->where('path', '([A-z\d\-/_.]+)?');
+    Route::get('/cashier/{path}', [RestrictedRoutesController::class, 'indexCashier'])->where('any', '^(?!js/).*')->where('path', '([A-z\d\-/_.]+)?');
+    Route::get('/guard/{path}', [RestrictedRoutesController::class, 'indexGuard'])->where('any', '^(?!js/).*')->where('path', '([A-z\d\-/_.]+)?');
+    Route::get('/assesor/{path}', [RestrictedRoutesController::class, 'indexAssesor'])->where('any', '^(?!js/).*')->where('path', '([A-z\d\-/_.]+)?');
+    Route::get('/queuedisplay/{path}', [RestrictedRoutesController::class, 'indexQueDisplay'])->where('any', '^(?!js/).*')->where('path', '([A-z\d\-/_.]+)?');
 
