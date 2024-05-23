@@ -8,8 +8,10 @@
 }
 
 .content-wrapper {
-    height: 84% !important;
+    height: 100% !important;
     width: 100%;
+    display: flex;
+    justify-content: space-between !important;
 }
 
 .navbar .container-fluid {

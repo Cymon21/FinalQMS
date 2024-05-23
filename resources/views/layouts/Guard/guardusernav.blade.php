@@ -21,7 +21,6 @@
     <link rel="icon" type="image/png" href="{{ asset('images/spc_logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav/guardpublic.css') }}">
-    <script src="https://kit.fontawesome.com/45e9201bc9.js" crossorigin="anonymous"></script>
 
     @vite('resources/sass/app.scss')
 </head>
@@ -76,8 +75,10 @@
 
                                 <button type="button" class="btn btn-secondary bg-transparent dropdown-toggle "
                                     data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-
-                                    <div class="display-6">Profile</div>
+                                    @if (Auth::check())
+                                        
+                                    <div class="display-6">{{ Auth::user()->name }}</div>
+                                    @endif
                                     <div class="main-image-div">
                                         <img src="{{ asset('images/spc_logo.png') }}" alt="profile-sample">
                                     </div>
@@ -93,7 +94,7 @@
                                     </li>
 
                                     <li class=" nav-item btn-group">
-                                        <a class=" nav-link " aria-current="page" href="#">
+                                        <a class=" nav-link " aria-current="page" href="{{ route('logout') }}">
                                             <i class="fa-solid fa-sign-out btn-group"></i>
                                             <div class="display-6"> Logout</div>
                                         </a>
@@ -110,22 +111,16 @@
         </div>
     </div>
 
-
     @vite('resources/js/app.js')
-
-
-
-
-
-    @vite('resources/js/app.js')
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-     @include('sweetalert::alert')
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('sweetalert::alert')
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/45e9201bc9.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
