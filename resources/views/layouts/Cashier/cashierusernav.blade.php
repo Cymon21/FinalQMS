@@ -30,8 +30,8 @@
 <body class="overflow-hidden">
     <div class="wrapper" id="app">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom ">
+            <div class="container">
                 <!-- logo -->
                 <a class="navbar-brand m-0" href="#">
 
@@ -75,7 +75,7 @@
                             </li>
                             <div class="btn-group dark">
 
-                                <button type="button" class="btn btn-secondary bg-transparent dropdown-toggle "
+                                <button type="button" class="btn btn-secondary bg-transparent  "
                                     data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     @if (Auth::check())
                                         <div class="display-6">{{ Auth::user()->name }}</div>
@@ -87,7 +87,7 @@
 
 
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end">
-                                    <li class=" nav-item btn-group ">
+                                    <li class=" nav-item btn-group  ">
                                         <a class=" nav-link " aria-current="page" href="#">
                                             <i class="fa-solid fa-user btn-group"></i>
                                             <div class="display-6"> Profile</div>
