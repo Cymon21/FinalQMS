@@ -39,28 +39,16 @@ class AssesorController extends Controller
         $queServeving = Cache::increment('currServing'.date('Y-m-d'));
         return response()->json($queServeving, 200);
     }
+
+    
     public function finishAssesorQue(){
         $queServeving = Cache::get('currServing'.date('Y-m-d'), 0);
         $endQue = QueueNumModel::select('queue_name_number')
                     ->where('queue_name_number', '>', $queServeving)
-                    ->where('usertype_id', '=', 2)
+                    ->where('usertype_id', '=', 1)
                     ->get();
         return response()->json($endQue, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

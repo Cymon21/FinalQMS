@@ -1,99 +1,8 @@
 <template>
     <div class="display-wrapper">
-        <div class="card" >
+        <div class="card" v-for="cashier in queCashier" :key="cashier.id">
             <div class="card-title display-6 p-0 mt-4">
-                cashier
-            </div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
-            </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
-            >
-                On Serving
-            </div>
-        </div>
-        <div class="card" >
-            <div class="card-title display-6 p-0 mt-4">
-                cashier
-            </div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
-            </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
-            >
-                On Serving
-            </div>
-        </div>
-        <div class="card" >
-            <div class="card-title display-6 p-0 mt-4">
-                cashier
-            </div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
-            </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
-            >
-                On Serving
-            </div>
-        </div>
-        <div class="card" >
-            <div class="card-title display-6 p-0 mt-4">
-                cashier
-            </div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
-            </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
-            >
-                On Serving
-            </div>
-        </div>
-        <div class="card" >
-            <div class="card-title display-6 p-0 mt-4">
-                cashier
-            </div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
-            </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
-            >
-                On Serving
-            </div>
-        </div>
-        <div class="card" >
-            <div class="card-title display-6 p-0 mt-4">
-                cashier
-            </div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
-            </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
-            >
-                On Serving
-            </div>
-        </div>
-        <div class="card" >
-            <div class="card-title display-6 p-0 mt-4">
-                cashier
-            </div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
-            </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
-            >
-                On Serving
-            </div>
-        </div>
-        <div class="card" >
-            <div class="card-title display-6 p-0 mt-4">
-                cashier
+                {{ cashier.designation.name }}
             </div>
             <div class="card-body display-1 d-flex justify-content-center">
                 1
@@ -113,9 +22,9 @@
                 1
             </div>
             <div
-                class="card-footer text-danger fw-bold d-flex justify-content-center bg-light fs-4"
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-4"
             >
-                On Break
+                On Serving
             </div>
         </div>
     </div>
@@ -161,6 +70,8 @@ export default {
     mounted() {
         this.GetQueCashier();
         this.GetQueAssesor();
+
+        
     },
 };
 </script>

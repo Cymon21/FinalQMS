@@ -4,8 +4,8 @@
             <div class="button-wrapper">
                 <div class="card diplay-5">Cashier</div>
                 <div class="card diplay-5">Assesor</div>
-                <div class="card diplay-5" @click="finishCaterQue()">Finish</div>
-                <div class="card diplay-5" @click="startQue()">Start</div>
+                <div class="card diplay-5" @click="caterFinishQueNumber()">Finish</div>
+                <div class="card diplay-5" @click="caterQueNumber()">Start</div>
             </div>
         </div>
         <div class="view-wrapper">
@@ -55,8 +55,9 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col" class="display-3" @click="reloadData()">
+                                <th class="display-3">
                                     Pending QUE's
+                                    <i class='reload bx bx-sync' @click="reloadData()"></i>
                                 </th>
                             </tr>
                         </thead>

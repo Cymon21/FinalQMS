@@ -22,6 +22,7 @@ class CashierController extends Controller
         $queNum = QueueNumModel::where("usertype_id", "<>", 2)->get();
         return $queNum;
     }
+    
     public function servingQue(){
         $queServing = Cache::increment('serving'.date('Y-m-d'));
         return response()->json($queServing, 200);

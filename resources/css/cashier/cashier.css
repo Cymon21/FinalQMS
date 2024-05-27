@@ -93,6 +93,9 @@
     font-family: "Lato";
     font-size: calc(0.425rem + 1.1vw) !important;
 }
+.reload{
+    cursor: pointer;
+}
 
 ::-webkit-scrollbar {
     display: none;
