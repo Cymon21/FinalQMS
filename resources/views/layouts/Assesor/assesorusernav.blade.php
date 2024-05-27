@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assesor</title>
+    <title>Cashier</title>
 
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -30,8 +30,8 @@
 <body class="overflow-hidden">
     <div class="wrapper" id="app">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom ">
+            <div class="container">
                 <!-- logo -->
                 <a class="navbar-brand m-0" href="#">
 
@@ -75,10 +75,11 @@
                             </li>
                             <div class="btn-group dark">
 
-                                <button type="button" class="btn btn-secondary bg-transparent dropdown-toggle "
+                                <button type="button" class="btn btn-secondary bg-transparent  "
                                     data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-
-                                    <div class="display-6">Profile</div>
+                                    @if (Auth::check())
+                                        <div class="display-6">{{ Auth::user()->name }}</div>
+                                    @endif
                                     <div class="main-image-div">
                                         <img src="{{ asset('images/spc_logo.png') }}" alt="profile-sample">
                                     </div>
@@ -86,7 +87,7 @@
 
 
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end">
-                                    <li class=" nav-item btn-group ">
+                                    <li class=" nav-item btn-group  ">
                                         <a class=" nav-link " aria-current="page" href="#">
                                             <i class="fa-solid fa-user btn-group"></i>
                                             <div class="display-6"> Profile</div>
@@ -94,7 +95,7 @@
                                     </li>
 
                                     <li class=" nav-item btn-group">
-                                        <a class=" nav-link" aria-current="page" href="#">
+                                        <a class=" nav-link " aria-current="page" href="{{ route('logout') }}">
                                             <i class="fa-solid fa-sign-out btn-group"></i>
                                             <div class="display-6"> Logout</div>
                                         </a>
@@ -113,6 +114,12 @@
 
 
     @vite('resources/js/app.js')
+
+
+
+
+
+    @vite('resources/js/app.js')
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      @include('sweetalert::alert')
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -120,7 +127,9 @@
      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
