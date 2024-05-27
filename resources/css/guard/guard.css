@@ -1,26 +1,29 @@
-/* .content-wrapper {
+.content-wrapper-1 {
+    height: 80%;
+    width: 100%;
+    max-width: 82.5rem;
+    max-height: 150rem;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    height: 100% !important;
-} */
+}
 
 .button-wrapper {
     width: 40%;
-    height: 40%;
+    height: 60%;
     display: flex;
     flex-wrap: wrap;
-    align-items: start;
+    align-items: center;
     justify-content: center;
-    margin-left: 5rem;
-
+    gap: 1rem;
 }
 
 .button-wrapper .card {
-    width: 300px;
-    height: 100px;
-    margin: 10px;
+    width: 100%;
+    height: 40%;
+    max-width: 300px !important;
+    min-width: 100px;
+    min-height: 100px;
+    max-height: 100% !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +33,7 @@
 
 .button-wrapper .card:hover{
     background-color: #003e6e !important;
-    color:aliceblue !important;
+    color: aliceblue !important;
 }
 .view-wrapper {
     display: flex;
@@ -42,25 +45,35 @@
 }
 
 .view-queue {
+    max-width: 40rem !important;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    height: 50%;
-    border: transparent;
-    width: 100%;
+    height: 60%;
+    width:  70%;
+    box-shadow: 0px 0px 18px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
 }
 
 .view-queue-number {
     height: 70%;
-    font-size: 10rem;
+    width:90%;
+    font-size: clamp(10rem, 10vh, 15rem);
+    /* border: #003e6e80 0.4rem solid; */
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .view-queue-name {
-    height: 30%;
+    height: 20%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .view-button {
@@ -68,39 +81,42 @@
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: auto;
-    padding-top: 10%;
-}
+    height: 30%;
+    }
 
 .view-button .btn {
     width: 100%;
-    height: 6rem;
-    background-color: #003e6e;
+    height: 50%;
+    max-width: 100%;
+    min-width: 18rem;
+    background-color: #001c30;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 0;
+    border-radius: 0.5rem !important;
+    border: none !important;
 }
-.view-button .btn .display-5{
-    font-size: 2rem;
+.view-button .btn  {
+    word-spacing: 20px;
+    font-size: 1em;
     font-family: "roboto";
     font-weight: bold;
-    padding: 10px;
-} 
- .btn:hover{
-    color:white !important;
+}
+.view-button .btn:active{
+    background-color:#003e6e;
 }
 
-@media(max-width:425px) {
-
-    .content-wrapper {
+@media (max-width: 880px ),  (min-height: 1620px){
+    .content-wrapper-1 {
         display: flex;
         flex-direction: column;
+        height: 100%;
     }
 
     .button-wrapper {
-        width: 100%;
-        height: 40%;
+        width: 90%;
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -109,15 +125,21 @@
         margin-left: 0;
     }
 
-
-
     .view-wrapper {
         display: flex;
-        width: 70%;
+        width: 90%;
         height: 100%;
         align-items: center;
         flex-direction: column;
         justify-content: start;
     }
-
+    .view-queue{
+        width: 100%;
+        max-width: 45rem !important;
+    }
+    .view-button .btn  {
+        word-spacing: 20px;
+        font-family: "roboto";
+        font-weight: bold;
+    }
 }

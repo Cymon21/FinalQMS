@@ -25,11 +25,11 @@
     @vite('resources/sass/app.scss')
 </head>
 
-<body class="vh-100 overflow-hidden">
+<body>
     <div class="wrapper" id="app">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom ">
+            <div class="container">
                 <!-- logo -->
                 <a class="navbar-brand m-0" href="#">
 
@@ -73,7 +73,7 @@
                             </li>
                             <div class="btn-group dark">
 
-                                <button type="button" class="btn btn-secondary bg-transparent dropdown-toggle "
+                                <button type="button" class="btn btn-secondary bg-transparent"
                                     data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     @if (Auth::check())
                                         

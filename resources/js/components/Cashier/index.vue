@@ -1,11 +1,13 @@
 <template>
-    <div class="content-wrapper">
-        <div class="view-button-wrapper">
-            <div class="button-wrapper">
-                <div class="card diplay-5">Cashier</div>
-                <div class="card diplay-5">Assesor</div>
-                <div class="card diplay-5" @click="caterFinishQueNumber()">Finish</div>
-                <div class="card diplay-5" @click="caterQueNumber()">Start</div>
+    <div class="content-wrapper-2">
+        <div class="view-button-wrapper-1">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3 col-md-2"><div class="card diplay-5">Cashier</div></div>
+                <div class="col-sm-6 col-lg-3 col-md-2"><div class="card diplay-5">Cashier</div></div>
+                <div class="col-sm-6 col-lg-3 col-md-6"><div class="card diplay-5">Cashier</div></div>
+                <!-- <div class="card diplay-5">Assesor</div>
+                <div class="card diplay-5" @click="finishCaterQue()">Finish</div>
+                <div class="card diplay-5" @click="startQue()">Start</div> -->
             </div>
         </div>
         <div class="view-wrapper">
