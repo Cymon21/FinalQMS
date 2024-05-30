@@ -5,6 +5,7 @@ namespace App\Http\Controllers\QueueDisplay;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\QueueNumModel;
 
 class QueueDisplayController extends Controller
 {
@@ -28,6 +29,20 @@ class QueueDisplayController extends Controller
     }
 
     public function displayCashierCurrQue(){
-        // $currServe = Cache::get('currServe', 'default');
+        $displayQue = QueueNumModel::select('usertype_id', 'que_status', 'queue_name_number')
+                                    ->where('usertype_id', '=', 1)
+                                    ->where('que_status', '=', 'Serving')
+                                    ->get();
+        
+        return response()->json($displayQue, 200);                          
+    }
+
+    public function displayAssesorCurrQues(){
+        $displayQue = QueueNumModel::select('usertype_id', 'que_status', 'queue_name_number')
+                                    ->where('usertype_id', '=', 2)
+                                    ->where('que_status', '=', 'Serving')
+                                    ->get();
+
+        return response()->json($displayQue, 200);   
     }
 }

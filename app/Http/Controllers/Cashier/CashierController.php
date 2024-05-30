@@ -19,22 +19,51 @@ class CashierController extends Controller
 
     public function showQuePending()
     {
-        $queNum = QueueNumModel::where("usertype_id", "<>", 2)->get();
+        $queNum = QueueNumModel::where("usertype_id", '=', 1)
+                                ->where('que_status', '=', 'Uncatered')
+                                ->get();
         return $queNum;
     }
     
+    
     public function servingQue(){
         $queServing = Cache::increment('serving'.date('Y-m-d'));
-        return response()->json($queServing, 200);
+
+        $quecurServe = Cache::get('serving'.date('Y-m-d'), 0);
+
+        $getQue = QueueNumModel::select('queue_name_number', 'que_status')
+                    ->where('queue_name_number', '=', $quecurServe)
+                    ->where("usertype_id", '=', 1)
+                    ->update(['que_status' => 'Serving']);
+
+        $serveQue = QueueNumModel::select('queue_name_number', 'que_status')
+                            ->where('queue_name_number', '<=', $quecurServe)
+                            ->where("usertype_id", '=', 1)
+                            ->first();
+
+
+        return response()->json($quecurServe, 200);
+    }
+
+    public function endedQue($id){
+
+        $currQue = QueueNumModel::select('queue_name_number', 'usertype_id')
+                                    ->where('queue_name_number', '=', $id)
+                                    ->update(['que_status' => 'Ended']);
+
+        return response()->json($currQue, 200); 
     }
 
     public function getQue(){
         $queServing = Cache::get('serving'.date('Y-m-d'), 0);
-        $getQue = QueueNumModel::select('queue_name_number')
+
+        $getQue = QueueNumModel::select('queue_name_number', 'usertype_id')
                     ->where('queue_name_number', '>', $queServing)
-                    ->where('usertype_id', '<>', 2)
+                    ->where("usertype_id", '=', 1)
+                    ->where('que_status', '=', 'Uncatered')
                     ->get();
-        return response()->json($getQue, 200);
+                    
+        return response()->json($getQue, 200); 
     }
 
 }

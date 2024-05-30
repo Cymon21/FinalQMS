@@ -1,91 +1,36 @@
 <template>
     <div class="content-wrapper-1">
         <div class="button-wrapper">
-            <div class="card card btn btn-outline-dark">Cashier</div>
-            <div class="card btn btn-outline-dark d-flex flex-row">
-              Assesor
+            <div
+                class="card card btn btn-outline-dark"
+                v-for="item in user_type"
+                :key="item.id"
+                @click="selectUser(item.id)"
+                :style="{
+                    backgroundColor:
+                        item.id === alreadyClicked ? '#00406d' : '#005ead10',
+                }"
+            >
+            <h1 :style="{  color: item.id === alreadyClicked ? 'white' : 'black', }">
+                {{ item.name }}</h1>
             </div>
-            
         </div>
 
         <div class="view-wrapper">
             <div class="view-queue card">
-                <div class="view-queue-name display-2">Cashier</div>
-                <div class="view-queue-number display-1">1</div>
+                <div class="view-queue-number display-1">{{ current_number }}</div>
             </div>
             <div class="view-button">
-                <button class="btn"><i class="fa-solid fa-print fa-2xl"><span>Print</span></i></button>
+                <button class="btn" @click="submitQueueData()">
+                    <i class="fa-solid fa-print fa-2xl"><span>Print</span></i>
+                </button>
             </div>
         </div>
     </div>
 </template>
-<style>
-@import "/resources/css/guard/guard.css";
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <template>
-    <div class="container">
-        <div class="content1">
-            <div class="childcontent1">
-                <div
-                    class="card card1"
-                    v-for="item in user_type"
-                    :key="item.id"
-                    @click="selectUser(item.id)"
-                    :style="{
-                        backgroundColor:
-                            item.id === alreadyClicked
-                                ? '#00406d'
-                                : '#005ead10',
-                    }"
-                >
-                    <h1
-                        :style="{
-                            color:
-                                item.id === alreadyClicked ? 'white' : 'black',
-                        }"
-                    >
-                        {{ item.name }}
-                    </h1>
-                </div>
-            </div>
-        </div>
-        <div class="content2">
-            <div class="container">
-                <div class="childcontent2">
-                    <div class="quenumber">
-                        <h2>Current Queue Number</h2>
-                        <h1>{{ current_number }}</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="childbutton">
-                <button type="submit" @click="submitQueueData()">Print</button>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script>
 import axios from "axios";
+import Swal from 'sweetalert2';
 export default {
     data() {
         return {
@@ -111,6 +56,7 @@ export default {
             axios
                 .get("/api/guard/generate/number/" + user_id)
                 .then((response) => {
+                    console.log(response);
                     this.alreadyClicked = user_id;
                     this.current_number = response.data;
                 })
@@ -144,6 +90,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import "/resources/css/guard/guard.css";
-</style> -->
+</style>

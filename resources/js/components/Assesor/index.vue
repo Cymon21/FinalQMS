@@ -4,19 +4,19 @@
         <div class="row">
             <div class="card button-wrapper-cashier">
                 <div class="buttons-wrapper">
-                    <div class="card buttons mt-2">
+                    <div class="card buttons mt-2" role="button">
                         <div class="display-5">Cashier</div>
                     </div>
-                    <div class="card buttons mt-2">
+                    <div class="card buttons mt-2" role="button">
                         <div class="display-5">Finance</div>
                     </div>
-                    <div class="card buttons">
+                    <div class="card buttons" role="button">
                         <div class="display-5">Assesor</div>
                     </div>
-                    <div class="card buttons">
+                    <div class="card buttons" role="button" @click="startQue()">
                         <div class="display-5">Start</div>
                     </div>
-                    <div class="card buttons mb-2">
+                    <div class="card buttons mb-2" role="button" @click="endQue()">
                         <div class="display-5">Finish</div>
                     </div>
                 </div>
@@ -52,30 +52,30 @@
                         </div>
                     </div>
                     <div class="view-que">
-                        <div class="display-1">1</div>
+                        <div class="display-1">{{ assesorQueCater }}</div>
                     </div>
                     <div class="card-footer mt-2">
                         <div class="display-5">Status:</div>
                         <div class="display-5 text-success fw-bold mx-2">
-                            OnBreak
+                            Serving
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card Pending-wrapper-cashier">
                  <thead>
-                        <tr>
-                            <th>  <div class="display-5 w-100 mt-2">On Queue's</div></th>
+                        <tr class="position-relative">
+                            <th>  <div class="display-5 w-100 mt-2">
+                                <p class="fs-2 fw-semobold">On Queue's</p>
+                                <i class='reload bx bx-sync position-absolute top-0 end-0 fs-3' @click="reloadData()"></i>
+                            </div></th>
                         </tr>
                     </thead>
                 <div class="OnQueue mt-2">
                 <table class="table">
                     <tbody>
-                        <tr>
-                            <td><div class=" display-5 row">1</div></td>
-                        </tr>
-                        <tr>
-                            <td><div class=" display-5 row">1</div></td>
+                        <tr v-for="items in assesorPending" :key="items.id">
+                            <td><div class=" display-5 row">{{ items.queue_name_number }}</div></td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,6 +107,16 @@ export default {
                     console.log(error);
                 });
         },
+        endQue(){
+            let formData = new FormData();
+                formData.append('_method', 'PUT');
+            axios.post('/api/assesor/update/serve/end/' + this.assesorQueCater, formData).then((response) =>{
+                this.assesorQueCater = 0;
+                this.finishCaterQue();
+            }).catch((error) =>{
+                console.log(error);
+            });
+        },
         finishCaterQue() {
             axios
                 .get("/api/assesor/end/queNum")
@@ -120,7 +130,7 @@ export default {
         },
         reloadData() {
             setTimeout(() => {
-                window.location.reload();
+                this.finishCaterQue();
             }, 0);
         },
     },

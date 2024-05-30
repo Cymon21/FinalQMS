@@ -59,11 +59,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('/cashier/get/queueNum', [CashierController::class, 'showQuePending']);
     Route::get('/cashier/serve/queueNum', [CashierController::class, 'servingQue']);
     Route::get('/cashier/get/serve/queueNum', [CashierController::class, 'getQue']);
+    Route::put('/cashier/update/serve/end/{id}', [CashierController::class, 'endedQue']);
 //Assesor
     Route::get('/assesor/display/que', [AssesorController::class, 'showAssesorQue']);
     Route::get('/assesor/get/queNum', [AssesorController::class, 'getAssesorQue']);
     Route::get('/assesor/end/queNum', [AssesorController::class, 'finishAssesorQue']);
+    Route::put('/assesor/update/serve/end/{id}', [AssesorController::class, 'endedQue']);
 // Queu Display
     Route::get('/cashier/queuDisplay', [QueueDisplayController::class,'displayCashierQue']);
     Route::get('/assesor/queuDisplay', [QueueDisplayController::class,'displayAssesorQue']);
+    Route::get('/cashier/currQue/cashDisplay', [QueueDisplayController::class, 'displayCashierCurrQue']);
+    Route::get('/assesor/currQue/asserDisplay', [QueueDisplayController::class, 'displayAssesorCurrQues']);
 
