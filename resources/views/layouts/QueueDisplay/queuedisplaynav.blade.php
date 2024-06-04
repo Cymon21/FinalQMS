@@ -21,26 +21,14 @@
         rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('images/spc_logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/nav/cashierpublic.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav/queuedisplay.css') }}">
 
     @vite('resources/sass/app.scss')
 </head>
 
 <body class="overflow-hidden">
     <div class="wrapper" id="app">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="container-fluid">
-                <!-- logo -->
-                <a class="navbar-brand m-0" href="#">
-
-                    <img class="d-inline-block align-center " src="{{ asset('images/spc_logo.png') }}" alt="spc-logo"
-                        width="80" height="80">
-                    <div class="display-6">San Pedro College</div>
-                </a>
-            </div>
-        </nav>
-        <div class="content-wrapper">
+        <div class="content-wrapper-2">
             <router-view></router-view>
         </div>
     </div>

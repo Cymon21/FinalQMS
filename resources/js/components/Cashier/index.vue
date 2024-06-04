@@ -87,7 +87,7 @@
 <style scoped>
 @import "/resources/css/cashier/cashier.css";
 </style>
-<script>
+<!-- <script>
 import axios from "axios";
 export default {
     data() {
@@ -139,4 +139,4 @@ export default {
         this.caterFinishQueNumber();
     },
 };
-</script>
+</script> -->

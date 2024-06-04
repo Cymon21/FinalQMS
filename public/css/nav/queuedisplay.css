@@ -1,0 +1,12 @@
+.wrapper {
+    width: 100dvw;
+    height: 100vh;
+    background-image: url('/images/spcbuilding.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden !important;
+}
+
+.content-wrapper-2 {
+    height: 100%;
+}
