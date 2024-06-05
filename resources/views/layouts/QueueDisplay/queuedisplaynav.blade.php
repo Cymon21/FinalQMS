@@ -21,7 +21,7 @@
         rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('images/spc_logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/nav/cashierpublic.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav/queuedisplay.css') }}">
 
     @vite('resources/sass/app.scss')
 </head>
