@@ -25,7 +25,10 @@ class User extends Authenticatable
         'password',
         'status',
         'usertype_id',
-        'designation_id'
+        'designation_id',
+        'role',
+        'que_id',
+        'avatar_img'
     ];
 
 
@@ -58,4 +61,8 @@ class User extends Authenticatable
     public function designation(){
         return $this->belongsTo(Designation::class, 'designation_id');
     } 
+
+    public function que(){
+        return $this->hasMany(QueueNumModel::class, 'que_id');
+    }
 }

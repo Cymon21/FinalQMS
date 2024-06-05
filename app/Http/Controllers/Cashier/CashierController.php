@@ -36,7 +36,7 @@ class CashierController extends Controller
                     ->where("usertype_id", '=', 1)
                     ->update(['que_status' => 'Serving']);
 
-        $serveQue = QueueNumModel::select('queue_name_number', 'que_status')
+        $serveQue = QueueNumModel::select('queue_name_number', 'usertype_id')
                             ->where('queue_name_number', '<=', $quecurServe)
                             ->where("usertype_id", '=', 1)
                             ->first();

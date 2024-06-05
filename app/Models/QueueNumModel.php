@@ -14,6 +14,7 @@ class QueueNumModel extends Model
         'id',
         'queue_name_number',
         'usertype_id',
+        'user_id',
         'que_status',
     ];
 
@@ -21,5 +22,11 @@ class QueueNumModel extends Model
     {   
         //Model name tapos name sa column sa imong database
         return $this->belongsTo(UserType::class, 'usertype_id');
+    }
+
+    public function usersID()
+    {   
+        //Model name tapos name sa column sa imong database
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

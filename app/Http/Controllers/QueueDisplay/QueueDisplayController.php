@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\QueueNumModel;
 
 class QueueDisplayController extends Controller
+
 {
     public function index(){
         return view("QueueDisplayView.mainqueuedisplay");
@@ -22,7 +23,8 @@ class QueueDisplayController extends Controller
     }
 
     public function displayAssesorQue(){
-        $assesorUser = User::select('status','usertype_id', 'designation_id')->where("usertype_id", "=", 2)
+        $assesorUser = User::select('status','usertype_id', 'designation_id')
+                        ->where("usertype_id", "=", 2)
                         ->where('status', '=', 'Verified')
                         ->with("user_type", "designation")->get();
         return $assesorUser;
@@ -30,18 +32,20 @@ class QueueDisplayController extends Controller
 
     public function displayCashierCurrQue(){
         $displayQue = QueueNumModel::select('usertype_id', 'que_status', 'queue_name_number')
-                                    ->where('usertype_id', '=', 1)
-                                    ->where('que_status', '=', 'Serving')
-                                    ->get();
+                            ->where('usertype_id', '=', 1)
+                            ->where('que_status', '=', 'Serving')
+                            ->with('usersID')
+                            ->get();
         
         return response()->json($displayQue, 200);                          
     }
 
     public function displayAssesorCurrQues(){
-        $displayQue = QueueNumModel::select('usertype_id', 'que_status', 'queue_name_number')
-                                    ->where('usertype_id', '=', 2)
-                                    ->where('que_status', '=', 'Serving')
-                                    ->get();
+        $displayQue = QueueNumModel::with('usertype')->select('usertype_id', 'que_status')
+                            ->where('usertype_id', '=', 2)
+                            ->where('que_status', '=', 'Serving')
+                            ->with('usersID')
+                            ->get();
 
         return response()->json($displayQue, 200);   
     }

@@ -63,14 +63,9 @@
                 </div>
             </div>
             <div class="card Pending-wrapper-cashier">
-                 <thead>
-                        <tr class="position-relative">
-                            <th>  <div class="display-5 w-100 mt-2">
-                                <p class="fs-2 fw-semobold">On Queue's</p>
-                                <i class='reload bx bx-sync position-absolute top-0 end-0 fs-3' @click="reloadData()"></i>
-                            </div></th>
-                        </tr>
-                    </thead>
+                <div class="display-5 mt-2 fs-2 fw-semibold">
+                    On Queue's
+                </div>
                 <div class="OnQueue mt-2">
                 <table class="table">
                     <tbody>
@@ -121,17 +116,12 @@ export default {
             axios
                 .get("/api/assesor/end/queNum")
                 .then((response) => {
-                    this.assesorQueCater = 0;
                     this.assesorPending = response.data;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-        },
-        reloadData() {
-            setTimeout(() => {
-                this.finishCaterQue();
-            }, 0);
+                setTimeout(this.finishCaterQue, 4000);
         },
     },
     mounted() {

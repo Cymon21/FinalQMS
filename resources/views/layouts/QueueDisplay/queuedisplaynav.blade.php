@@ -29,8 +29,8 @@
 <body class="overflow-hidden">
     <div class="wrapper" id="app">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom ">
+            <div class="container">
                 <!-- logo -->
                 <a class="navbar-brand m-0" href="#">
 
