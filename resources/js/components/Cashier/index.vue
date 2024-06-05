@@ -13,10 +13,18 @@
                     <div class="card buttons" role="button">
                         <div class="display-5">Assesor</div>
                     </div>
-                    <div class="card buttons" @click="caterQueNumber()" role="button">
+                    <div
+                        class="card buttons"
+                        @click="caterQueNumber()"
+                        role="button"
+                    >
                         <div class="display-5">Start</div>
                     </div>
-                    <div class="card buttons mb-2" @click="endedQueNum()" role="button">
+                    <div
+                        class="card buttons mb-2"
+                        @click="endedQueNum()"
+                        role="button"
+                    >
                         <div class="display-5">Finish</div>
                     </div>
                 </div>
@@ -52,7 +60,7 @@
                         </div>
                     </div>
                     <div class="view-que">
-                        <div class="display-1">{{ currentServing }}</div>
+                        <div class="display-1">{{ currentServing }} 1</div>
                     </div>
                     <div class="card-footer mt-2">
                         <div class="display-5">Status:</div>
@@ -63,23 +71,22 @@
                 </div>
             </div>
             <div class="card Pending-wrapper-cashier">
-                 <thead>
-                        <tr class="position-relative">
-                            <th>  <div class="display-5 mt-2">
-                                <p class="fs-2 fw-semobold">On Queue's</p>
-                                <i class='reload bx bx-sync position-absolute top-0 end-0 fs-3' @click="reloadData()"></i>
-                            </div></th>
-                        </tr>
-                    </thead>
+                <div class="display-5 mt-2 fs-2 fw-semibold">
+                    On Queue's
+                </div>
                 <div class="OnQueue mt-2">
-                <table class="table">
-                    <tbody>
-                        <tr v-for="items in cashierPending" :key="items.id">
-                            <td><div class=" display-5 row">{{ items.queue_name_number }}</div></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <table class="table">
+                        <tbody>
+                            <tr v-for="items in cashierPending" :key="items.id">
+                                <td>
+                                    <div class="display-5 row">
+                                        {{ items.queue_name_number }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -87,7 +94,7 @@
 <style scoped>
 @import "/resources/css/cashier/cashier.css";
 </style>
-<!-- <script>
+<script>
 import axios from "axios";
 export default {
     data() {
@@ -139,4 +146,4 @@ export default {
         this.caterFinishQueNumber();
     },
 };
-</script> -->
+</script>

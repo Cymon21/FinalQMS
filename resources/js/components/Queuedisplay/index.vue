@@ -1,7 +1,48 @@
 <template>
     <div class="display-wrapper">
+        <div class="card" v-for="cashier in queCashier" :key="cashier.id">
+            <div class="card-title display-6 p-0 mt-4 fw-bold">
+                {{ cashier.designation.name }}
+            </div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                {{ queCash?.queue_name_number }}
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2"
+            >
+                Now Serving
+            </div>
+        </div>
+        <div class="card" v-for="items in queAssesor" :key="items.id">
+            <div class="card-title display-6 p-0 mt-4 fw-bold">
+                {{ items.designation.name }}
+            </div>
+            <div
+                class="card-body display-1 d-flex justify-content-center"
+                v-for="queAss in asseCurrQue"
+                :key="queAss.id"
+            >
+                {{ queAss?.queue_name_number }}
+            </div>
+            <div
+                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2"
+            >
+                Now Serving
+            </div>
+        </div>
         <div class="card">
             <div class="card-title display-6 p-0 mt-4 fw-bold">Cashier</div>
+            <div class="card-body display-1 d-flex justify-content-center">
+                1
+            </div>
+            <div
+                class="card-footer text-danger fw-bold d-flex justify-content-center bg-light fs-2"
+            >
+                On Break
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title display-6 p-0 mt-4 fw-bold">Assesor</div>
             <div class="card-body display-1 d-flex justify-content-center">
                 1
             </div>
@@ -11,27 +52,6 @@
                 Now Serving
             </div>
         </div>
-         <div class="card">
-            <div class="card-title display-6 p-0 mt-4 fw-bold"> Cashier</div>
-            <div class="card-body display-1 d-flex justify-content-center">1</div>
-            <div class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2">
-                Now Serving
-            </div>
-        </div>
-        <div class="card">
-           <div class="card-title display-6 p-0 mt-4 fw-bold"> Cashier</div>
-           <div class="card-body display-1 d-flex justify-content-center">1</div>
-           <div class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2">
-               Now Serving
-           </div>
-       </div>
-       <div class="card">
-          <div class="card-title display-6 p-0 mt-4 fw-bold"> Cashier</div>
-          <div class="card-body display-1 d-flex justify-content-center">1</div>
-          <div class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2">
-              Now Serving
-          </div>
-      </div>
     </div>
 </template>
 
@@ -39,7 +59,7 @@
 @import "/resources/css/queue/queue.css";
 </style>
 
-<!-- <script>
+<script>
 import axios from "axios";
 export default {
     data() {
@@ -107,7 +127,7 @@ export default {
         this.GetQueAssesor();
     },
 };
-</script> -->
+</script>
 
 <!-- 
 <div class="card" v-for="cashier in queCashier" :key="cashier.id">

@@ -16,7 +16,11 @@
                     <div class="card buttons" role="button" @click="startQue()">
                         <div class="display-5">Start</div>
                     </div>
-                    <div class="card buttons mb-2" role="button" @click="endQue()">
+                    <div
+                        class="card buttons mb-2"
+                        role="button"
+                        @click="endQue()"
+                    >
                         <div class="display-5">Finish</div>
                     </div>
                 </div>
@@ -63,23 +67,23 @@
                 </div>
             </div>
             <div class="card Pending-wrapper-cashier">
-                 <thead>
-                        <tr class="position-relative">
-                            <th>  <div class="display-5 w-100 mt-2">
-                                <p class="fs-2 fw-semobold">On Queue's</p>
-                                <i class='reload bx bx-sync position-absolute top-0 end-0 fs-3' @click="reloadData()"></i>
-                            </div></th>
-                        </tr>
-                    </thead>
+                <div class="display-5 w-100 mt-2 fs-2 fw-semibold">
+                    On Queue's
+                </div>
+
                 <div class="OnQueue mt-2">
-                <table class="table">
-                    <tbody>
-                        <tr v-for="items in assesorPending" :key="items.id">
-                            <td><div class=" display-5 row">{{ items.queue_name_number }}</div></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <table class="table">
+                        <tbody>
+                            <tr v-for="items in assesorPending" :key="items.id">
+                                <td>
+                                    <div class="display-5 row">
+                                        {{ items.queue_name_number }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -107,15 +111,21 @@ export default {
                     console.log(error);
                 });
         },
-        endQue(){
+        endQue() {
             let formData = new FormData();
-                formData.append('_method', 'PUT');
-            axios.post('/api/assesor/update/serve/end/' + this.assesorQueCater, formData).then((response) =>{
-                this.assesorQueCater = 0;
-                this.finishCaterQue();
-            }).catch((error) =>{
-                console.log(error);
-            });
+            formData.append("_method", "PUT");
+            axios
+                .post(
+                    "/api/assesor/update/serve/end/" + this.assesorQueCater,
+                    formData
+                )
+                .then((response) => {
+                    this.assesorQueCater = 0;
+                    this.finishCaterQue();
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         },
         finishCaterQue() {
             axios

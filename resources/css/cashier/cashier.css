@@ -4,6 +4,7 @@
 
 .container {
     align-content: center;
+    overflow: auto;
 }
 
 .row {
@@ -53,6 +54,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 3rem;
 
 }
 
@@ -75,6 +77,7 @@
     display: flex;
     justify-content: space-between;
     border: none !important;
+    min-height: 15rem;
 
 }
 
@@ -120,6 +123,8 @@
 
 .OnQueue {
     width: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .Pending-wrapper-cashier>.display-5 {
