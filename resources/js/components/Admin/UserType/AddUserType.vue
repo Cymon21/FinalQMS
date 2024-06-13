@@ -51,7 +51,7 @@ export default {
     },
     methods:{
         submituserType(){
-            axios.post("/api/usertype/create", this.usertype).then((response) =>{
+            axios.post("/usertype/create", this.usertype).then((response) =>{
                 this.usertype.name = '';
                 $("#add-usertype-modal").modal("hide");
                 Swal.fire({

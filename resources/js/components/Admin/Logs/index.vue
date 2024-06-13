@@ -93,21 +93,21 @@ export default {
     },
     methods:{
         displayUser(){
-            axios.get('/api/user/displaylogs').then((response) =>{
+            axios.get('/user/displaylogs').then((response) =>{
                 this.user = response.data;
             }).catch((error)=>{ 
                 console.log(error);
             });
         },
         displayUserType(){
-            axios.get('/api/userType/displaylogs').then((response)=>{
+            axios.get('/userType/displaylogs').then((response)=>{
                 this.userType = response.data;
             }).catch((error) =>{
                 console.log(error);
             });
         },
         displayDesignation(){
-            axios.get('/api/designation/displaylogs').then((response)=>{
+            axios.get('/designation/displaylogs').then((response)=>{
                 this.designation = response.data;
             }).catch((error) =>{
                 console.log(error);

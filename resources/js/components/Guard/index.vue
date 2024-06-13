@@ -22,7 +22,9 @@
             </div>
             <div class="view-button">
                 <button class="btn" @click="submitQueueData()">
-                    <i class="fa-solid fa-print fa-2xl"><span>Print</span></i>
+                    <!-- <i class="fa-solid fa-print fa-2xl"> -->
+                        <span class="fs-1 fw-semibold mb-0 text-white">Done</span>
+                    <!-- </i> -->
                 </button>
             </div>
         </div>
@@ -43,7 +45,7 @@ export default {
     methods: {
         getAllUsers() {
             axios
-                .get("/api/guard/get/usertype")
+                .get("/guard/get/usertype")
                 .then((response) => {
                     this.user_type = response.data;
                 })
@@ -54,7 +56,7 @@ export default {
         selectUser(user_id) {
             this.selectedUserID = user_id;
             axios
-                .get("/api/guard/generate/number/" + user_id)
+                .get("/guard/generate/number/" + user_id)
                 .then((response) => {
                     console.log(response);
                     this.alreadyClicked = user_id;
@@ -66,7 +68,7 @@ export default {
         },
         submitQueueData() {
             axios
-                .post("/api/guard/add/number/" + this.selectedUserID)
+                .post("/guard/add/number/" + this.selectedUserID)
                 .then((response) => {
                     Swal.fire({
                         position: "center",

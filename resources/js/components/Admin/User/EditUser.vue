@@ -114,7 +114,7 @@ export default {
             });
             try {
                 const response = await axios.put(
-                    "/api/user/edit/put/" + id,
+                    "/user/edit/put/" + id,
                     this.user
                 );
                 pleaseWaitAlert.close();
@@ -143,7 +143,7 @@ export default {
         },
         displayUserType() {
             axios
-                .get("/api/usertype")
+                .get("/usertype")
                 .then((response) => {
                     this.usertype = response.data.data;
                 })
@@ -156,7 +156,7 @@ export default {
         selectedUserType: function (value) {
             axios
                 .get(
-                    "/api/designation?usertype_id=" + this.selectedUserType?.id
+                    "/designation?usertype_id=" + this.selectedUserType?.id
                 )
                 .then((response) => {
                     this.designation = response.data.data;

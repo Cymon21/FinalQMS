@@ -111,7 +111,7 @@ export default {
     methods: {
         displayUsers() {
             axios
-                .get("/api/user/display")
+                .get("/user/display")
                 .then((response) => {
                     // need ug (map) to specific to call a column from the db 
                     // eg("status"=>column name === (row of the specific column))
@@ -160,7 +160,7 @@ export default {
                     if (data.isConfirmed) {
                         axios
                         //always need ang id for calling the delete function ;)
-                            .delete("/api/user/delete/" + id)
+                            .delete("/user/delete/" + id)
                             .then((response) => {
                                 Swal.fire(
                                     "Remove!",

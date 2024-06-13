@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 class AuthenticationController extends Controller
 {
-    public function _construct()
-    {
-    }
+    
 
     public function login()
     {
@@ -34,26 +32,26 @@ class AuthenticationController extends Controller
 
         $credentials = $request->only('email', 'password');
 
+      
+
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+            $user->log_session = Session::getId(); // Store the session ID in the last_session column
+            $user->save(); 
 
             if ($user->status == 'Unverified') {
                 Alert::error('Login Failed', 'Your acccount is not verified.')->persistent(true);
                 return redirect()->back()->withErrors(['email' => 'Your acccount is not verified.']);
             }elseif ($user->role == 'admin') {
-                $request->session()->put('ss_id', $user->id);
                 Alert::success('Login Successfuly', 'Welcome Admin', $user->name)->persistent('true');
                 return redirect()->route('AdminDash');
             } else {
                 switch ($user->usertype_id) {
                     case 1:
-                        $request->session()->put('ss_id', $user->id);
                         return redirect()->route('cashier.dashboard');
-                    case 2:
-                        $request->session()->put('ss_id', $user->id);
+                    case 2:;
                         return redirect()->route('assesor.dashboard');
                     case 3:
-                        $request->session()->put('ss_id', $user->id);
                         return redirect()->route('guard.dashboard');
                     case 4:
                         return redirect()->route('queuedisplay.dashboard');
@@ -103,9 +101,10 @@ class AuthenticationController extends Controller
 
     public function logout(Request $request)
     {
-        Session::flush();
-        Session::pull('ss_id');
-        Alert::success('Logout Successfully', 'You have successfully logout.')->persistent('true');
-        return redirect('/login');
+        if (session_id() != Auth::user()->log_session) {
+            Auth::logout();
+            Alert::success('Logout Successfully', 'You have successfully logout.')->persistent('true');
+            return redirect('/login');
+        }
     }
 }

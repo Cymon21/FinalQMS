@@ -38,7 +38,7 @@ class AssesorController extends Controller
     }
 
 
-    public function getAssesorQue(){
+    public function getAssesorQue($id){
         $queServing = Cache::increment('currServing'.date('Y-m-d'));
 
         $curServe = Cache::get('currServing'.date('Y-m-d'));
@@ -46,7 +46,11 @@ class AssesorController extends Controller
         $getQue = QueueNumModel::select('queue_name_number', 'que_status')
                                 ->where('queue_name_number', '=', $curServe)
                                 ->where('usertype_id', '=', 2)
-                                ->update(['que_status' => 'Serving']);
+                                ->update(['que_status' => 'Serving', 'user_id' => $id]);
+
+        if(!$getQue){
+            return response()->json(['message' => 'No Availanble Que'], 400);
+        }
 
         $serveQue = QueueNumModel::select('queue_name_number', 'que_status')
                                 ->where('queue_name_number', '<=', $curServe)

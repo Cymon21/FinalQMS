@@ -94,7 +94,7 @@ export default {
     methods: {
         startQue() {
             axios
-                .get("/api/assesor/get/queNum")
+                .get("/assesor/get/queNum/" + window.user.id)
                 .then((response) => {
                     this.assesorQueCater = response.data;
                 })
@@ -105,7 +105,7 @@ export default {
         endQue(){
             let formData = new FormData();
                 formData.append('_method', 'PUT');
-            axios.post('/api/assesor/update/serve/end/' + this.assesorQueCater, formData).then((response) =>{
+            axios.post('/assesor/update/serve/end/' + this.assesorQueCater, formData).then((response) =>{
                 this.assesorQueCater = 0;
                 this.finishCaterQue();
             }).catch((error) =>{
@@ -114,7 +114,7 @@ export default {
         },
         finishCaterQue() {
             axios
-                .get("/api/assesor/end/queNum")
+                .get("/assesor/end/queNum")
                 .then((response) => {
                     this.assesorPending = response.data;
                 })

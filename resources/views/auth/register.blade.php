@@ -5,38 +5,44 @@
      <link rel="stylesheet" href="{{ asset('css/global.css') }}">
      <link rel="stylesheet" href="{{ asset('css/nav/welcomeNav.css') }}">
  @endsection
- @section('navBar')
+ {{-- @section('navBar')
      @include('layouts.welcome.welcomeNav')
- @endsection
+ @endsection --}}
  @section('content')
-     <div class="container-fluid">
+     <div class="container h-100 d-flex align-items-center">
          <div class="header-login">
+            <div class="container-fluid custom-container">
+                <div class="image-container">
+                    <a href="/"><img src="{{ asset('images/spc_logo.png') }}" alt="spc-logo"></a>
+                    <h2 class="display-5" >San Pedro College</h2>
+                </div>
+            </div>
              <div class="login-form">
                  <h2>Sign Up</h2>
                  <p>Already have an account? <a href="{{ route('auth.login') }}">Click here!</a></p>
                  <form id="createUserForm" action="/storeUser" method="POST">
                      @csrf
                      <div class="form-group">
-                         <label for="">Name *</label>
+                         <label for="">Name </label>
                          <input type="text" class="form-control" id="name" name="name"
                              placeholder="Enter your fullname here" />
                          <div id="nameError"></div>
                      </div>
                      <div class="form-group">
-                         <label for="">Email *</label>
+                         <label for="">Email </label>
                          <input type="email" class="form-control" id="email" name="email"
                              placeholder="Enter your valid email here" />
                          <div id="emailError"></div>
                      </div>
                      <div class="form-group">
-                         <label for="">Password *</label>
-                         <input type="password" class="form-control" id="password" name="password"
+                         <label for="">Password </label>
+                         <input type="password" class="form-control " id="password" name="password"
                              placeholder="Type your password here" />
                          <div id="passwordError"></div>
                          <i class="las la-eye" id="togglePassword"></i>
                      </div>
                      <div class="form-group">
-                         <label for="" class="confPass">Confirm Password *</label>
+                         <label for="" class="confPass">Confirm Password </label>
                          <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
                              placeholder="Confirm your password here" />
                          <div id="password_confirmationError"></div>

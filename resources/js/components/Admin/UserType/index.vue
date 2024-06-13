@@ -129,7 +129,7 @@ export default {
         //Fetch Data Section
         displayUserType() {
             axios
-                .get("/api/usertype/display")
+                .get("/usertype/display")
                 .then((response) => {
                     console.log(response);
                     this.usertype = response.data;
@@ -140,7 +140,7 @@ export default {
         },
         displayDesignation() {
             axios
-                .get("/api/designation/display")
+                .get("/designation/display")
                 .then((response) => {
                     console.log(response);
                     this.designation = response.data;
@@ -173,7 +173,7 @@ export default {
                     if (data.isConfirmed) {
                         axios
                             //always need ang id for calling the delete function ;)
-                            .delete("/api/userType/type/delete/" + id)
+                            .delete("/userType/type/delete/" + id)
                             .then((response) => {
                                 Swal.fire(
                                     "Remove!",
@@ -210,7 +210,7 @@ export default {
                     if (data.isConfirmed) {
                         axios
                             //always need ang id for calling the delete function ;)
-                            .delete("/api/designation/assign/delete/" + id)
+                            .delete("/designation/assign/delete/" + id)
                             .then((response) => {
                                 Swal.fire(
                                     "Remove!",

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\QueueNumModel;
+use Illuminate\Support\Facades\DB;
 
 class QueueDisplayController extends Controller
 
@@ -15,38 +16,30 @@ class QueueDisplayController extends Controller
     }
 
     public function displayCashierQue(){
-        $cashierUser = User::select('status', 'usertype_id', 'designation_id')
+        $cashierUser = User::select('id', 'status', 'usertype_id', 'designation_id')
                         ->where("usertype_id", "=", 1)
+                        ->with(['que' => function($query) {
+                            $query->where('que_status', 'Serving');
+                        }])
                         ->where('status', '=', 'Verified')
                         ->with("user_type", "designation")->get();
         return $cashierUser;
     }
 
     public function displayAssesorQue(){
-        $assesorUser = User::select('status','usertype_id', 'designation_id')
+        $assesorUser = User::select('id', 'status', 'usertype_id', 'designation_id')
                         ->where("usertype_id", "=", 2)
+                        ->with(['que' => function($query) {
+                            $query->where('que_status', 'Serving');
+                        }])
                         ->where('status', '=', 'Verified')
-                        ->with("user_type", "designation")->get();
+                        ->with("user_type", "designation")
+                        // ->with(['designation' => function($desig) {
+                        //     $desig->where('id', 'name');
+                        // }])
+                        ->groupBy('id', 'designation_id')
+                        ->get();
         return $assesorUser;
     }
-
-    public function displayCashierCurrQue(){
-        $displayQue = QueueNumModel::select('usertype_id', 'que_status', 'queue_name_number')
-                            ->where('usertype_id', '=', 1)
-                            ->where('que_status', '=', 'Serving')
-                            ->with('usersID')
-                            ->get();
-        
-        return response()->json($displayQue, 200);                          
-    }
-
-    public function displayAssesorCurrQues(){
-        $displayQue = QueueNumModel::with('usertype')->select('usertype_id', 'que_status')
-                            ->where('usertype_id', '=', 2)
-                            ->where('que_status', '=', 'Serving')
-                            ->with('usersID')
-                            ->get();
-
-        return response()->json($displayQue, 200);   
-    }
+    
 }

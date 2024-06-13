@@ -1,15 +1,13 @@
 <template>
-    <div class="display-wrapper">
-        <div class="card" v-for="cashier in queCashier" :key="cashier.id">
+    <div class="display-wrapper p-2">
+        <div class="card " v-for="cashier in queCashier" :key="cashier.id">
             <div class="card-title display-6 p-0 mt-4 fw-bold">
                 {{ cashier.designation.name }}
             </div>
             <div class="card-body display-1 d-flex justify-content-center">
-                {{ queCash?.queue_name_number }}
+                {{ cashier?.que[0]?.queue_name_number }} 
             </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2"
-            >
+            <div class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2">
                 Now Serving
             </div>
         </div>
@@ -17,34 +15,8 @@
             <div class="card-title display-6 p-0 mt-4 fw-bold">
                 {{ items.designation.name }}
             </div>
-            <div
-                class="card-body display-1 d-flex justify-content-center"
-                v-for="queAss in asseCurrQue"
-                :key="queAss.id"
-            >
-                {{ queAss?.queue_name_number }}
-            </div>
-            <div
-                class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2"
-            >
-                Now Serving
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-title display-6 p-0 mt-4 fw-bold">Cashier</div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
-            </div>
-            <div
-                class="card-footer text-danger fw-bold d-flex justify-content-center bg-light fs-2"
-            >
-                On Break
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-title display-6 p-0 mt-4 fw-bold">Assesor</div>
-            <div class="card-body display-1 d-flex justify-content-center">
-                1
+            <div class="card-body display-1 d-flex justify-content-center" >
+                {{ items?.que[0]?.queue_name_number }}
             </div>
             <div
                 class="card-footer text-success fw-bold d-flex justify-content-center bg-light fs-2"
@@ -66,63 +38,37 @@ export default {
         return {
             queCashier: [],
             queAssesor: [],
-            cashCurrQue: [],
-            asseCurrQue: [],
         };
     },
     methods: {
         GetQueCashier() {
             axios
-                .get("/api/cashier/queuDisplay")
+                .get("/cashier/queuDisplay")
                 .then((response) => {
-                    this.queCashier = response.data;
+                    if (response.data) {
+                         this.queCashier = response.data;
+                    } else {
+                        this.queCashier = '0';
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
                 });
+                setTimeout(this.GetQueCashier, 3000);
         },
         GetQueAssesor() {
             axios
-                .get("/api/assesor/queuDisplay")
+                .get("/assesor/queuDisplay")
                 .then((response) => {
                     this.queAssesor = response.data;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
+                setTimeout(this.GetQueAssesor, 3000);
         },
-
-        displayCashQue(){
-            axios.get('/api/cashier/currQue/cashDisplay').then((response)=>{
-                if (response.data && response.data.length > 0) {
-                    this.cashCurrQue = response.data;
-                } else {
-                    this.cashCurrQue = "0";
-                }
-            }).catch((error)=>{
-                console.log(error);
-                this.cashCurrQue = "0";
-            });
-            setTimeout(this.displayCashQue, 5000);
-        },
-        displayAsseQue(){
-            axios.get('/api/assesor/currQue/asserDisplay').then((response)=>{
-                if (response.data && response.data.length > 0) {
-                    this.asseCurrQue = response.data;
-                } else {
-                    this.asseCurrQue = "0";
-                }
-            }).catch((error)=>{
-                console.log(error);
-                this.asseCurrQue = "0";
-            });
-            setTimeout(this.displayAsseQue, 5000);
-        },
-        
     },
     mounted() {
-        this.displayAsseQue();
-        this.displayCashQue();
         this.GetQueCashier();
         this.GetQueAssesor();
     },

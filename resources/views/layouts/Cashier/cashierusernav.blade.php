@@ -117,7 +117,11 @@
 
 
 
-
+    @auth
+        <script>
+            window.user = @json(auth()->user());
+        </script>
+    @endauth
 
     @vite('resources/js/app.js')
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

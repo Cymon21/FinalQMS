@@ -26,7 +26,8 @@ class CashierController extends Controller
     }
     
     
-    public function servingQue(){
+    public function servingQue($id){
+       
         $queServing = Cache::increment('serving'.date('Y-m-d'));
 
         $quecurServe = Cache::get('serving'.date('Y-m-d'), 0);
@@ -34,7 +35,13 @@ class CashierController extends Controller
         $getQue = QueueNumModel::select('queue_name_number', 'que_status')
                     ->where('queue_name_number', '=', $quecurServe)
                     ->where("usertype_id", '=', 1)
-                    ->update(['que_status' => 'Serving']);
+                    ->update(['que_status' => 'Serving', 'user_id' => $id]);
+
+        if(!$getQue){
+            return response()->json(['message' => 'No available que'], 400);
+        }
+
+        
 
         $serveQue = QueueNumModel::select('queue_name_number', 'usertype_id')
                             ->where('queue_name_number', '<=', $quecurServe)
@@ -49,7 +56,9 @@ class CashierController extends Controller
 
         $currQue = QueueNumModel::select('queue_name_number', 'usertype_id')
                                     ->where('queue_name_number', '=', $id)
-                                    ->update(['que_status' => 'Ended']);
+                                    ->update(['que_status' => 'Ended']); 
+
+                                    
 
         return response()->json($currQue, 200); 
     }

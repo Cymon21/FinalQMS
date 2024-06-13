@@ -59,7 +59,7 @@ export default {
     },
     methods:{
         submitDesigData(){
-            axios.post('/api/designation/create', this.designation).then((response)=>{
+            axios.post('/designation/create', this.designation).then((response)=>{
                 this.designation.name = '',
                 this.designation.usertype_id = '',
                 $('#add-designation-modal').modal('hide');
@@ -76,7 +76,7 @@ export default {
             });
         },
         displayUserType(){
-            axios.get("/api/usertype/add/display").then((response) =>{
+            axios.get("/usertype/add/display").then((response) =>{
                 this.usertype = response.data;
             }).catch((error) =>{
                 console.log(error);

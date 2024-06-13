@@ -14,6 +14,7 @@ class QueueNumModel extends Model
         'id',
         'queue_name_number',
         'usertype_id',
+        'designation_id',
         'user_id',
         'que_status',
     ];

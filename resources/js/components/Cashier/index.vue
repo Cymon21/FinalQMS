@@ -84,7 +84,7 @@
 <style scoped>
 @import "/resources/css/cashier/cashier.css";
 </style>
-<!-- <script>
+<script>
 import axios from "axios";
 export default {
     data() {
@@ -95,8 +95,9 @@ export default {
     },
     methods: {
         caterQueNumber() {
+
             axios
-                .get("/api/cashier/serve/queueNum")
+                .get("/cashier/serve/queueNum/"+ window.user.id)
                 .then((response) => {
                     console.log(response);
                     this.currentServing = response.data;
@@ -109,7 +110,7 @@ export default {
         endedQueNum(){
             let formData = new FormData();
                 formData.append('_method', 'PUT');
-            axios.post('/api/cashier/update/serve/end/' + this.currentServing, formData).then((response) =>{
+            axios.post('/cashier/update/serve/end/' + this.currentServing, formData).then((response) =>{
                 this.currentServing = 0;
                 this.caterFinishQueNumber();
             }).catch((error) =>{    
@@ -118,7 +119,7 @@ export default {
         },
         caterFinishQueNumber() {
             axios
-                .get("/api/cashier/get/serve/queueNum")
+                .get("/cashier/get/serve/queueNum")
                 .then((response) => {
                     this.cashierPending = response.data;
                 })
@@ -126,11 +127,11 @@ export default {
                     console.log(error);
                 });
 
-                setTimeout(this.caterFinishQueNumber, 4000);
+                setTimeout(this.caterFinishQueNumber, 6000);
         },
     },
     mounted() {
         this.caterFinishQueNumber();
     },
 };
-</script> -->
+</script>

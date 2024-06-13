@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav/welcomeNav.css')}}">
 @endsection
-@section('navBar')
+{{-- @section('navBar')
     @include('layouts.welcome.welcomeNav')
-@endsection
+@endsection --}}
 @section('content')
-    <div class="container-fluid">
+    <div class="container h-100 d-flex align-items-center">
         <div class="header-login">
             <div class="login-form">
                 <h2>Forgot Password</h2>

@@ -125,7 +125,7 @@ export default {
             formData.append("password", this.password);
 
             axios
-                .post("/api/user/create", formData)
+                .post("/user/create", formData)
                 .then((response) => {
                     // console.log(response.data);
                     this.user.name = "";
@@ -180,7 +180,7 @@ export default {
     watch: {
         selectedClass: function (value) {
             axios
-                .get("/api/designation?usertype_id=" + this.selectedClass?.id)
+                .get("/designation?usertype_id=" + this.selectedClass?.id)
                 .then((response) => {
                     this.designation = response.data.data;
                     this.setPasswordBasedOnUserType();
