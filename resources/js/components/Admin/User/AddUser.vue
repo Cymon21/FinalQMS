@@ -149,7 +149,7 @@ export default {
         },
         displayUserType() {
             axios
-                .get("/api/usertype")
+                .get("/usertype")
                 .then((response) => {
                     this.usertype = response.data.data;
                 })
